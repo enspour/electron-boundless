@@ -1,0 +1,15 @@
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+.control {
+    -webkit-app-region: no-drag;
+}
+
+.controls__history {
+    display: flex;
+    gap: .7rem;
+}

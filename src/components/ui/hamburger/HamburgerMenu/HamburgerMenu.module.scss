@@ -1,0 +1,24 @@
+.hamburger {
+    padding: 1rem;
+    padding-right: 0;
+    width: 22rem;
+    height: 100%;
+    transition: 0.4s;
+    overflow: hidden;
+}
+
+.hamburger__hide {
+    width: 0;
+    padding: 0;
+}
+
+.hamburger__menu {
+    height: 100%;
+}
+
+.hamburger__menu__items {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

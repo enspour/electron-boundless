@@ -1,0 +1,10 @@
+.controls {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.control {
+    -webkit-app-region: no-drag;
+}

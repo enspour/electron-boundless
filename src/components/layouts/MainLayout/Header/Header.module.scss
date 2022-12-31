@@ -1,0 +1,28 @@
+.header {
+    width: 100%;
+    height: 4.5rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    -webkit-app-region: drag;
+    background-color: var(--bg-secondary);
+    color: var(--color-secondary);
+}
+
+.header__title {
+    width: 100%;
+    text-align: center;
+    line-height: 4.5rem;
+    white-space: nowrap;
+}
+
+.header__hamburger, .header__controls {
+    padding: 0 2rem;
+    height: 100%;
+    width: 20rem;
+    display: flex;
+}
+
+.header__controls {
+    justify-content: flex-end;
+}

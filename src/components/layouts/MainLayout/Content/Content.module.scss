@@ -1,0 +1,11 @@
+.wrapper {
+    height: calc(100vh - 4.5rem);
+    display: flex;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}

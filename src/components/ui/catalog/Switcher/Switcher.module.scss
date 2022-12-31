@@ -1,0 +1,41 @@
+.container {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input {
+    display: none;
+}
+
+.input:checked+.switcher::after {
+    background-color: var(--switcher-active);
+    left: 1.5rem;
+}
+
+.switcher {
+    position: relative;
+    width: 3.5rem;
+    height: 2.2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: .2rem;
+        left: .2rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        background-color: var(--switcher-unactive);
+        border-radius: 2rem;
+        transition: all .3s linear;
+    }
+}
+
+.switcher__label {
+    white-space: nowrap;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

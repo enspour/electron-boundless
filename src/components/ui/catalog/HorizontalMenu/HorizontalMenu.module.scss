@@ -1,0 +1,35 @@
+@mixin menu-item-active {
+    background-color: var(--bg-hover-secondary);
+    color: var(--color-hover-secondary);
+}
+
+.menu {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu__items {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.menu__item {
+    padding: .8rem 2rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        @include menu-item-active();
+    }
+}
+
+.menu__item__active {
+    @include menu-item-active();
+}

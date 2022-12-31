@@ -1,0 +1,29 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.tabs__items {
+    padding: .2rem;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: .2rem;
+    border-radius: 1rem;
+}
+
+.tabs__item {
+    padding: .5rem 3rem;
+    text-align: center;
+    border-radius: 1rem;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.tabs__content {
+    margin-top: 1rem;
+}
+
+.tabs__content__switch {
+    opacity: 0;
+}
