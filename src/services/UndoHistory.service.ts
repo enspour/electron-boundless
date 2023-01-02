@@ -6,19 +6,19 @@ export interface Command {
     undo: (...args: any[]) => void;
 }
 
-export interface UndoHistoryItemState {
-    current: any[];
-    previous: any[];
+export interface UndoHistoryItemArgs {
+    redoArgs: any[];
+    undoArgs: any[];
 }
 
-const initialState: UndoHistoryItemState = {
-    current: [],
-    previous: [],
+const initialState: UndoHistoryItemArgs = {
+    redoArgs: [],
+    undoArgs: [],
 };
 
 interface UndoRedoItem {
     name: string;
-    state: UndoHistoryItemState;
+    args: UndoHistoryItemArgs;
 }
 
 export interface UndoHistoryOptions {
@@ -54,10 +54,10 @@ class UndoHistoryService implements Service {
         this.commands.push(command);
     }
 
-    execute(name: string, state: UndoHistoryItemState = initialState) {
+    execute(name: string, args: UndoHistoryItemArgs = initialState) {
         const command = this.commands.find((item) => item.name === name);
         if (command) {
-            command.execute(...state.current);
+            command.execute(...args.redoArgs);
 
             if (this.position !== this.history.length - 1) {
                 this.history.splice(this.position + 1);
@@ -65,14 +65,14 @@ class UndoHistoryService implements Service {
 
             this.history.push({
                 name,
-                state,
+                args,
             });
 
             this.position += 1;
         }
     }
 
-    push(name: string, state: UndoHistoryItemState = initialState) {
+    push(name: string, args: UndoHistoryItemArgs = initialState) {
         const command = this.commands.find((item) => item.name === name);
         if (command) {
             if (this.position !== this.history.length - 1) {
@@ -81,7 +81,7 @@ class UndoHistoryService implements Service {
 
             this.history.push({
                 name,
-                state,
+                args,
             });
 
             this.position += 1;
@@ -105,7 +105,7 @@ class UndoHistoryService implements Service {
             );
 
             if (command) {
-                command.undo(...history.state.previous);
+                command.undo(...history.args.undoArgs);
             }
 
             this.position -= 1;
@@ -129,7 +129,7 @@ class UndoHistoryService implements Service {
             );
 
             if (command) {
-                command.execute(...history.state.current);
+                command.execute(...history.args.redoArgs);
             }
         }
     }

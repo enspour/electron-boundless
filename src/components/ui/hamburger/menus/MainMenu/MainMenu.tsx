@@ -6,7 +6,7 @@ import HorizontalMenuNav from "@components/ui/catalog/HorizontalMenu/HorizontalM
 import HorizontalMenuLink from "@components/ui/catalog/HorizontalMenu/HorizontalMenuLink";
 import HorizontalMenuButton from "@components/ui/catalog/HorizontalMenu/HorizontalMenuButton";
 
-import { HamburgerLocations } from "../../Hamburger";
+import { HamburgerLocations } from "../../HamburgerMenu/HamburgerMenu";
 
 import services from "@services/index";
 
