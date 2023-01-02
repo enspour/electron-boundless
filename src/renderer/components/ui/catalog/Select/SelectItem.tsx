@@ -2,7 +2,13 @@ import React from "react";
 
 import useIsHover from "@hooks/css/useIsHover";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import {
+    Colors,
+    Backgrounds,
+    HoverColors,
+    HoverBackgrounds,
+    ThemeColor,
+} from "@services/Theme.service";
 
 import styles from "./Select.module.scss";
 
@@ -36,12 +42,10 @@ const SelectItem = ({
             ref={itemRef}
             className={styles.select__item}
             style={{
-                color: isHover
-                    ? `var(--color-hover-${_color})`
-                    : `var(--color-${_color})`,
+                color: isHover ? HoverColors[_color] : Colors[_color],
                 backgroundColor: isHover
-                    ? `var(--bg-hover-${_color})`
-                    : `var(--bg-${_color})`,
+                    ? HoverBackgrounds[_color]
+                    : Backgrounds[_color],
             }}
             onClick={clickHandler}
         >

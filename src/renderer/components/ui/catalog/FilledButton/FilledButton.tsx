@@ -2,7 +2,13 @@ import React from "react";
 
 import useIsHover from "@hooks/css/useIsHover";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import {
+    Colors,
+    Backgrounds,
+    HoverBackgrounds,
+    HoverColors,
+    ThemeColor,
+} from "@services/Theme.service";
 
 import styles from "./FilledButton.module.scss";
 
@@ -27,20 +33,18 @@ const FilledButton = ({ children, onClick, color }: FilledButtonProps) => {
             ref={buttonRef}
             className={styles.wrapper}
             style={{
-                color: `var(--color-${color})`,
-                backgroundColor: `var(--bg-${color})`,
+                color: Colors[color],
+                backgroundColor: Backgrounds[color],
             }}
             onClick={clickHandler}
         >
             <button
                 className={styles.button}
                 style={{
-                    color: isHover
-                        ? `var(--color-hover-${color})`
-                        : `var(--color-${color})`,
+                    color: isHover ? HoverColors[color] : Colors[color],
                     backgroundColor: isHover
-                        ? `var(--bg-hover-${color})`
-                        : `var(--bg-${color})`,
+                        ? HoverBackgrounds[color]
+                        : Backgrounds[color],
                 }}
             >
                 {children}

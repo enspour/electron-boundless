@@ -9,7 +9,7 @@ import MaximizeIcon from "@assets/images/header/maximize.svg";
 import UnMaximizeIcon from "@assets/images/header/un-maximize.svg";
 import MinimizeIcon from "@assets/images/header/minimize.svg";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import { ThemeColor } from "@services/Theme.service";
 
 import services from "@services/index";
 

@@ -4,7 +4,7 @@ import Icon from "../Icon/Icon";
 
 import ClearIcon from "@assets/images/input/clear.svg";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import { Colors, Backgrounds, ThemeColor } from "@services/Theme.service";
 
 import styles from "./Input.module.scss";
 
@@ -35,8 +35,8 @@ const Input = ({
         <div
             className={styles.container}
             style={{
-                backgroundColor: `var(--bg-${color})`,
-                color: `var(--color-${color})`,
+                color: Colors[color],
+                backgroundColor: Backgrounds[color],
             }}
         >
             <input

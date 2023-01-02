@@ -1,10 +1,10 @@
 import React from "react";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import { IconColors, ThemeColor } from "@services/Theme.service";
 
 type ClickHandler = (e: React.MouseEvent<HTMLElement>) => void;
 
-interface SvgProps {
+interface IconProps {
     icon: string;
     width: string;
     height: string;
@@ -18,7 +18,7 @@ const Icon = ({
     height,
     color = "primary",
     onClick,
-}: SvgProps) => {
+}: IconProps) => {
     const handleClick: ClickHandler = (e) => {
         onClick?.call({}, e);
     };
@@ -28,7 +28,7 @@ const Icon = ({
         maskSize: "cover",
         WebkitMaskImage: `url(${icon})`,
         maskImage: `url(${icon})`,
-        backgroundColor: `var(--icon-${color})`,
+        backgroundColor: IconColors[color],
         cursor: onClick ? "pointer" : "auto",
         height,
         width,

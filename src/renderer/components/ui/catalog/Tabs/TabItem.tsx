@@ -2,7 +2,11 @@ import React from "react";
 
 import useIsHover from "@hooks/css/useIsHover";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import {
+    Backgrounds,
+    HoverBackgrounds,
+    ThemeColor,
+} from "@services/Theme.service";
 
 import styles from "./Tabs.module.scss";
 
@@ -27,8 +31,8 @@ const Tab = ({ name, onClick, _isActive, _color }: TabProps) => {
             style={{
                 backgroundColor:
                     isHover || _isActive
-                        ? `var(--bg-hover-${_color})`
-                        : `var(--bg-${_color})`,
+                        ? HoverBackgrounds[_color]
+                        : Backgrounds[_color],
             }}
             onClick={onClick}
         >

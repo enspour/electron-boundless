@@ -5,7 +5,12 @@ import Icon from "../Icon/Icon";
 
 import SwitcherIcon from "@assets/images/switcher/switcher.svg";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import {
+    Colors,
+    Backgrounds,
+    BorderColors,
+    ThemeColor,
+} from "@services/Theme.service";
 
 import styles from "./Select.module.scss";
 
@@ -58,9 +63,9 @@ const Select = ({ children, initialIndex, color = "primary" }: SelectProps) => {
         <div
             className={styles.select}
             style={{
-                color: `var(--color-${color})`,
-                backgroundColor: `var(--bg-${color})`,
-                border: `0.1rem solid var(--border-${color})`,
+                color: Colors[color],
+                backgroundColor: Backgrounds[color],
+                border: `0.1rem solid ${BorderColors[color]}`,
                 borderRadius: isOpen ? "1rem 1rem 0 0" : "1rem",
             }}
             onClick={toggle}

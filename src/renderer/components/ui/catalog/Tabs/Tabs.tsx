@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 
 import TabsContent from "./TabsContent/TabsContent";
 
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
+import { Backgrounds, ThemeColor } from "@services/Theme.service";
 
 import styles from "./Tabs.module.scss";
 
@@ -69,7 +69,7 @@ const Tabs = ({
                 <div
                     className={styles.tabs__items}
                     style={{
-                        backgroundColor: `var(--bg-${color})`,
+                        backgroundColor: Backgrounds[color],
                     }}
                 >
                     {tabs}

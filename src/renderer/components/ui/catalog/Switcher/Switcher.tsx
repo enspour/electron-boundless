@@ -1,5 +1,6 @@
-import { ThemeColor } from "src/renderer/assets/styles/themes/types";
 import React from "react";
+
+import { Colors, Backgrounds, ThemeColor } from "@services/Theme.service";
 
 import styles from "./Switcher.module.scss";
 
@@ -32,14 +33,14 @@ const Switcher = ({
             <span
                 className={styles.switcher}
                 style={{
-                    backgroundColor: `var(--bg-${color})`,
+                    backgroundColor: Backgrounds[color],
                 }}
             ></span>
 
             <span
                 className={styles.switcher__label}
                 style={{
-                    color: `var(--color-${color})`,
+                    color: Colors[color],
                 }}
             >
                 {text}
