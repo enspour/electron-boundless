@@ -94,7 +94,7 @@ class UndoHistoryService implements Service {
         }
 
         if (this.position === this.history.length) {
-            this.position = this.history.length - 1;
+            this.position -= 1;
         }
 
         if (this.position >= 0) {
@@ -117,8 +117,8 @@ class UndoHistoryService implements Service {
             return;
         }
 
-        if (this.position === -1) {
-            this.position = 0;
+        if (this.position < this.history.length) {
+            this.position += 1;
         }
 
         if (this.position < this.history.length) {
@@ -131,8 +131,6 @@ class UndoHistoryService implements Service {
             if (command) {
                 command.execute(...history.state.current);
             }
-
-            this.position += 1;
         }
     }
 }
