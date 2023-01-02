@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 
 import TabsContent from "./TabsContent/TabsContent";
 
-import { ThemeColor } from "@assets/styles/themes/types";
+import { ThemeColor } from "src/renderer/assets/styles/themes/types";
 
 import styles from "./Tabs.module.scss";
 

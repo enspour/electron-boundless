@@ -1,4 +1,4 @@
-import { ThemeColor } from "@assets/styles/themes/types";
+import { ThemeColor } from "src/renderer/assets/styles/themes/types";
 import React from "react";
 
 import styles from "./Switcher.module.scss";

@@ -2,7 +2,7 @@ import React from "react";
 
 import useIsHover from "@hooks/css/useIsHover";
 
-import { ThemeColor } from "@assets/styles/themes/types";
+import { ThemeColor } from "src/renderer/assets/styles/themes/types";
 
 import styles from "./FilledButton.module.scss";
 

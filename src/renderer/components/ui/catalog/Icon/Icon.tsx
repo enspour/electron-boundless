@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ThemeColor } from "@assets/styles/themes/types";
+import { ThemeColor } from "src/renderer/assets/styles/themes/types";
 
 type ClickHandler = (e: React.MouseEvent<HTMLElement>) => void;
 

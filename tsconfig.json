@@ -14,15 +14,15 @@
     "jsx": "react-jsx",
     "paths": {
       "*": ["node_modules/*"],
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@assets/*": ["src/assets/*"],
-      "@services/*": ["src/services/*"],
+      "@components/*": ["src/renderer/components/*"],
+      "@hooks/*": ["src/renderer/hooks/*"],
+      "@assets/*": ["src/renderer/assets/*"],
+      "@services/*": ["src/renderer/services/*"],
 
-      "@redux": ["src/redux/index.ts"],
-      "@services": ["src/services/index.ts"],
-      "@utils": ["src/utils/index.ts"],
+      "@redux": ["src/renderer/redux/index.ts"],
+      "@services": ["src/renderer/services/index.ts"],
+      "@utils": ["src/renderer/utils/index.ts"],
     }
   },
-  "include": ["src/**/*", "types/**/*.d.ts"],
+  "include": ["src/**/*", "src/types/**/*.d.ts"],
 }

@@ -26,12 +26,12 @@ export const rendererConfig: Configuration = {
     plugins,
     resolve: {
         alias: {
-            "@components": path.resolve(__dirname, "src/components/"),
-            "@hooks": path.resolve(__dirname, "src/hooks/"),
-            "@assets": path.resolve(__dirname, "src/assets/"),
-            "@services": path.resolve(__dirname, "src/services/"),
-            "@redux": path.resolve(__dirname, "src/redux/"),
-            "@utils": path.resolve(__dirname, "src/utils/"),
+            "@components": path.resolve(__dirname, "src/renderer/components/"),
+            "@hooks": path.resolve(__dirname, "src/renderer/hooks/"),
+            "@assets": path.resolve(__dirname, "src/renderer/assets/"),
+            "@services": path.resolve(__dirname, "src/renderer/services/"),
+            "@redux": path.resolve(__dirname, "src/renderer/redux/"),
+            "@utils": path.resolve(__dirname, "src/renderer/utils/"),
         },
         extensions: [".js", ".ts", ".jsx", ".tsx", ".css", ".scss"],
     },

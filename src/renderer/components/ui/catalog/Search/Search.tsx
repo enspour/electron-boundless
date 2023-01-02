@@ -1,28 +1,27 @@
 import React from "react";
 
-import Icon from "../Icon/Icon";
+import Icon from "@components/ui/catalog/Icon/Icon";
 
+import SearchIcon from "@assets/images/search/search.svg";
 import ClearIcon from "@assets/images/input/clear.svg";
 
-import { ThemeColor } from "@assets/styles/themes/types";
+import { ThemeColor } from "src/renderer/assets/styles/themes/types";
 
-import styles from "./Input.module.scss";
+import styles from "./Search.module.scss";
 
-interface InputProps {
-    type?: "text" | "password" | "email";
+interface SearchProps {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
     placeholder?: string;
     color?: ThemeColor;
 }
 
-const Input = ({
-    type = "text",
+const Search = ({
     value,
     setValue,
     placeholder,
     color = "primary",
-}: InputProps) => {
+}: SearchProps) => {
     const setValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
@@ -33,15 +32,22 @@ const Input = ({
 
     return (
         <div
-            className={styles.container}
+            className={styles.search}
             style={{
-                backgroundColor: `var(--bg-${color})`,
                 color: `var(--color-${color})`,
+                backgroundColor: `var(--bg-${color})`,
             }}
         >
+            <Icon
+                icon={SearchIcon}
+                width="1.2rem"
+                height="1.2rem"
+                color={color}
+            />
+
             <input
-                className={styles.input}
-                type={type}
+                className={styles.search__input}
+                type="text"
                 value={value}
                 onChange={setValueHandler}
                 placeholder={placeholder}
@@ -58,4 +64,4 @@ const Input = ({
     );
 };
 
-export default React.memo(Input);
+export default React.memo(Search);

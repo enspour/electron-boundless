@@ -5,7 +5,7 @@ import Icon from "../Icon/Icon";
 
 import SwitcherIcon from "@assets/images/switcher/switcher.svg";
 
-import { ThemeColor } from "@assets/styles/themes/types";
+import { ThemeColor } from "src/renderer/assets/styles/themes/types";
 
 import styles from "./Select.module.scss";
 
