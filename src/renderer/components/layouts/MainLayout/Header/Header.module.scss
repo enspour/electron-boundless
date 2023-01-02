@@ -16,13 +16,19 @@
     white-space: nowrap;
 }
 
-.header__hamburger, .header__controls {
+.header__controls {
     padding: 0 2rem;
     height: 100%;
     width: 20rem;
     display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
-.header__controls {
+.header__window__controls {
+    padding: 0 2rem;
+    height: 100%;
+    width: 20rem;
+    display: flex;
     justify-content: flex-end;
 }
