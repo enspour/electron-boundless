@@ -9,12 +9,12 @@
     display: none;
 }
 
-.input:checked+.switcher::after {
-    background-color: var(--switcher-active);
+.input:checked+.toggle::after {
+    background-color: var(--toggle-active);
     left: 1.5rem;
 }
 
-.switcher {
+.toggle {
     position: relative;
     width: 3.5rem;
     height: 2.2rem;
@@ -28,13 +28,13 @@
         left: .2rem;
         width: 1.8rem;
         height: 1.8rem;
-        background-color: var(--switcher-un-active);
+        background-color: var(--toggle-un-active);
         border-radius: 2rem;
         transition: all .3s linear;
     }
 }
 
-.switcher__label {
+.toggle__label {
     white-space: nowrap;
     font-size: 1.5rem;
     cursor: pointer;

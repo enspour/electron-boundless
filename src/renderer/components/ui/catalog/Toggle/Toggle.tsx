@@ -2,21 +2,16 @@ import React from "react";
 
 import { Colors, Backgrounds, ThemeColor } from "@services/Theme.service";
 
-import styles from "./Switcher.module.scss";
+import styles from "./Toggle.module.scss";
 
-interface SwitcherProps {
+interface ToggleProps {
     value: boolean;
     setValue: (value: boolean | ((prev: boolean) => boolean)) => void;
     text: string;
     color?: ThemeColor;
 }
 
-const Switcher = ({
-    value,
-    setValue,
-    text,
-    color = "primary",
-}: SwitcherProps) => {
+const Toggle = ({ value, setValue, text, color = "primary" }: ToggleProps) => {
     const setValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.checked);
     };
@@ -31,14 +26,14 @@ const Switcher = ({
             />
 
             <span
-                className={styles.switcher}
+                className={styles.toggle}
                 style={{
                     backgroundColor: Backgrounds[color],
                 }}
             ></span>
 
             <span
-                className={styles.switcher__label}
+                className={styles.toggle__label}
                 style={{
                     color: Colors[color],
                 }}
@@ -49,4 +44,4 @@ const Switcher = ({
     );
 };
 
-export default React.memo(Switcher);
+export default React.memo(Toggle);
