@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { hamburgerActions, useAppDispatch, useAppSelector } from "@redux";
 
@@ -9,6 +10,8 @@ import MainMenu from "@components/ui/hamburger/menus/MainMenu/MainMenu";
 import ExercisesMenu from "@components/ui/hamburger/menus/ExercisesMenu/ExercisesMenu";
 
 import useStyleMatcher from "@hooks/css/useStyleMatcher";
+
+import services from "@services/index";
 
 import styles from "./HamburgerMenu.module.scss";
 
@@ -36,10 +39,75 @@ const useToggleAtResizingWindow = (options: HamburgerOptions) => {
     }, [size]);
 };
 
-export interface HamburgerLocations {
-    main: string;
-    exercises: string;
+export enum Menus {
+    main = "main",
+    exercises = "exercises",
 }
+
+const useHamburger = () => {
+    const navigate = useNavigate();
+
+    const [index, setIndex] = React.useState(0);
+
+    const locations = React.useRef<Record<Menus, string>>({
+        main: "/",
+        exercises: "/exercises/quiz",
+    });
+
+    React.useEffect(() => {
+        const navigateCommand = {
+            name: "hamburger-navigate",
+
+            execute: (location: Menus, to: string) => {
+                locations.current[location] = to;
+                navigate(to);
+            },
+
+            undo: (location: Menus, to: string) => {
+                locations.current[location] = to;
+                navigate(-1);
+            },
+        };
+
+        const gotoExercisesCommand = {
+            name: "hamburger-goto-exercises",
+
+            execute: () => {
+                navigate(locations.current.exercises);
+                setIndex(1);
+            },
+
+            undo: () => {
+                navigate(-1);
+                setIndex(0);
+            },
+        };
+
+        const ExercisesBackCommand = {
+            name: "hamburger-exercises-back",
+
+            execute: () => {
+                navigate(locations.current.main);
+                setIndex((prev) => prev - 1);
+            },
+
+            undo: () => {
+                navigate(-1);
+                setIndex((prev) => prev + 1);
+            },
+        };
+
+        services.undoHistory.register(navigateCommand);
+        services.undoHistory.register(gotoExercisesCommand);
+        services.undoHistory.register(ExercisesBackCommand);
+    }, []);
+
+    return {
+        index,
+        setIndex,
+        locations,
+    };
+};
 
 const matcher = {
     false: styles.hamburger__hide,
@@ -52,12 +120,7 @@ interface HamburgerProps {
 const Hamburger = ({ options = initialOptions }: HamburgerProps) => {
     const hamburgerRef = React.useRef();
 
-    const [index, setIndex] = React.useState(0);
-
-    const locations = React.useRef<HamburgerLocations>({
-        main: "/",
-        exercises: "/exercises/quiz",
-    });
+    const { index } = useHamburger();
 
     const isOpen = useAppSelector((state) => state.hamburger.isOpen);
 
@@ -71,17 +134,11 @@ const Hamburger = ({ options = initialOptions }: HamburgerProps) => {
                 <div className={styles.hamburger__menu}>
                     <SimpleCarousel index={index}>
                         <div className={styles.hamburger__menu__items}>
-                            <MainMenu
-                                setIndex={setIndex}
-                                locations={locations}
-                            />
+                            <MainMenu />
                         </div>
 
                         <div className={styles.hamburger__menu__items}>
-                            <ExercisesMenu
-                                setIndex={setIndex}
-                                locations={locations}
-                            />
+                            <ExercisesMenu />
                         </div>
                     </SimpleCarousel>
                 </div>
