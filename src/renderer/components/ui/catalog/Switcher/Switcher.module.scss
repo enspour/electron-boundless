@@ -1,0 +1,15 @@
+.switcher {
+    padding: .2rem;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: .2rem;
+    border-radius: 1rem;
+}
+
+.switcher__item {
+    text-align: center;
+    padding: .8rem 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
