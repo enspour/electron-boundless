@@ -1,6 +1,7 @@
-import React, { ReactElement } from "react";
+import React from "react";
 
-import TabsContent from "./TabsContent/TabsContent";
+import TabsTitle from "./TabsTitle";
+import TabsItem from "./TabsItem";
 
 import { Backgrounds, ThemeColor } from "@services/Theme.service";
 
@@ -9,76 +10,60 @@ import styles from "./Tabs.module.scss";
 export interface TabsOptions {
     initialIndex?: number;
     transition?: number;
+    color?: ThemeColor;
 }
 
 const initialOptions: TabsOptions = {
     initialIndex: 0,
     transition: 200,
+    color: "primary",
 };
 
 interface TabsProps {
     children: React.ReactNode[];
+    titles: string[];
+    onClick?: (index: number) => void;
     options?: TabsOptions;
-    color?: ThemeColor;
 }
 
-const Tabs = ({
-    children,
-    options = initialOptions,
-    color = "primary",
-}: TabsProps) => {
-    const opt = React.useMemo(
+const Tabs = ({ children, titles, onClick, options }: TabsProps) => {
+    const { initialIndex, transition, color } = React.useMemo(
         () => Object.assign({}, initialOptions, options),
         []
     );
 
-    const [index, setIndex] = React.useState(opt.initialIndex);
+    const [index, setIndex] = React.useState(initialIndex);
 
-    const tabs = React.useMemo(
-        () =>
-            React.Children.map(children, (child, idx) => {
-                if (React.isValidElement(child)) {
-                    return React.cloneElement(child as React.ReactElement, {
-                        onClick: () => {
-                            setIndex(idx);
-                            child.props.onClick?.call();
-                        },
-
-                        _isActive: idx === index,
-                        _color: color,
-                    });
-                }
-
-                return child;
-            }),
-        [index]
-    );
-
-    const contents = React.useMemo(
-        () =>
-            React.Children.map(
-                children,
-                (child: ReactElement) => child.props.children as React.ReactNode
-            ),
-        []
-    );
+    const click = (idx: number) => () => {
+        setIndex(idx);
+        onClick?.call({}, idx);
+    };
 
     return (
         <>
             <div className={styles.tabs}>
                 <div
-                    className={styles.tabs__items}
+                    className={styles.tabs__titles}
                     style={{
                         backgroundColor: Backgrounds[color],
                     }}
                 >
-                    {tabs}
+                    {titles.map((title, idx) => (
+                        <TabsTitle
+                            key={idx}
+                            onClick={click(idx)}
+                            isActive={idx === index}
+                            color={color}
+                        >
+                            {title}
+                        </TabsTitle>
+                    ))}
                 </div>
             </div>
 
-            <TabsContent index={index} options={opt}>
-                {contents}
-            </TabsContent>
+            <TabsItem index={index} transition={transition}>
+                {children}
+            </TabsItem>
         </>
     );
 };

@@ -3,7 +3,7 @@
     justify-content: center;
 }
 
-.tabs__items {
+.tabs__titles {
     padding: .2rem;
     display: inline-grid;
     grid-auto-flow: column;
@@ -12,7 +12,7 @@
     border-radius: 1rem;
 }
 
-.tabs__item {
+.tabs__title {
     padding: .5rem 3rem;
     text-align: center;
     border-radius: 1rem;
@@ -20,10 +20,10 @@
     cursor: pointer;
 }
 
-.tabs__content {
+.tabs__item {
     margin-top: 1rem;
 }
 
-.tabs__content__switch {
+.tabs__item__switch {
     opacity: 0;
 }

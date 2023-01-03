@@ -10,16 +10,14 @@ import {
 
 import styles from "./Tabs.module.scss";
 
-interface TabProps {
-    name: string;
-    children: React.ReactNode;
-    onClick?: () => void;
-
-    _isActive?: boolean;
-    _color?: ThemeColor;
+interface TabsTitleProps {
+    children: string;
+    onClick: () => void;
+    isActive: boolean;
+    color: ThemeColor;
 }
 
-const Tab = ({ name, onClick, _isActive, _color }: TabProps) => {
+const TabsTitle = ({ children, onClick, isActive, color }: TabsTitleProps) => {
     const tabRef = React.useRef();
 
     const isHover = useIsHover(tabRef);
@@ -27,18 +25,18 @@ const Tab = ({ name, onClick, _isActive, _color }: TabProps) => {
     return (
         <div
             ref={tabRef}
-            className={styles.tabs__item}
+            className={styles.tabs__title}
             style={{
                 backgroundColor:
-                    isHover || _isActive
-                        ? HoverBackgrounds[_color]
-                        : Backgrounds[_color],
+                    isHover || isActive
+                        ? HoverBackgrounds[color]
+                        : Backgrounds[color],
             }}
             onClick={onClick}
         >
-            {name}
+            {children}
         </div>
     );
 };
 
-export default React.memo(Tab);
+export default React.memo(TabsTitle);
