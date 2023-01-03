@@ -1,9 +1,10 @@
 import React from "react";
 
+import Icon from "@components/ui/catalog/Icon/Icon";
 import TruthRender from "@components/utils/TruthRender";
-import Icon from "../Icon/Icon";
+import SelectItem from "./SelectItem";
 
-import SwitcherIcon from "@assets/images/switcher/switcher.svg";
+import SelectIcon from "@assets/images/select/select.svg";
 
 import {
     Colors,
@@ -14,43 +15,39 @@ import {
 
 import styles from "./Select.module.scss";
 
-interface SelectProps {
-    children: React.ReactNode[];
+export interface SelectOptions {
     initialIndex?: number;
     color?: ThemeColor;
 }
 
-const Select = ({ children, initialIndex, color = "primary" }: SelectProps) => {
-    const [isOpen, setIsOpen] = React.useState(false);
+const initialOptions: SelectOptions = {
+    initialIndex: 0,
+    color: "primary",
+};
 
-    const [index, setIndex] = React.useState(initialIndex || 0);
+interface SelectProps {
+    children: React.ReactNode[];
+    onClick?: (index: number) => void;
+    options?: SelectOptions;
+}
 
+const Select = ({ children, onClick, options }: SelectProps) => {
     const items = React.useMemo(
         () =>
-            React.Children.map(children, (child, idx) => {
-                if (React.isValidElement(child)) {
-                    return React.cloneElement(child as React.ReactElement, {
-                        onClick: () => {
-                            setIndex(idx);
-                            child.props.onClick?.call();
-                        },
-
-                        _color: color,
-                    });
-                }
-
-                return child;
-            }),
+            children.map((element, index) => ({
+                element,
+                index,
+            })),
         []
     );
 
-    const selectedItem = React.useMemo(
-        () =>
-            React.cloneElement(children[index] as React.ReactElement, {
-                _selected: true,
-            }),
-        [index]
+    const { initialIndex, color } = React.useMemo(
+        () => Object.assign({}, initialOptions, options),
+        []
     );
+
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [index, setIndex] = React.useState(initialIndex);
 
     const restItems = React.useMemo(
         () => items.filter((_, idx) => idx !== index),
@@ -58,6 +55,11 @@ const Select = ({ children, initialIndex, color = "primary" }: SelectProps) => {
     );
 
     const toggle = () => setIsOpen((prev) => !prev);
+
+    const click = (idx: number) => () => {
+        setIndex(idx);
+        onClick?.call({}, idx);
+    };
 
     return (
         <div
@@ -70,7 +72,9 @@ const Select = ({ children, initialIndex, color = "primary" }: SelectProps) => {
             }}
             onClick={toggle}
         >
-            <div className={styles.select__item__selected}>{selectedItem}</div>
+            <div className={styles.select__item__selected}>
+                {children[index]}
+            </div>
 
             <div
                 style={{
@@ -78,7 +82,7 @@ const Select = ({ children, initialIndex, color = "primary" }: SelectProps) => {
                     transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                 }}
             >
-                <Icon icon={SwitcherIcon} width="1.2rem" height=".8rem" />
+                <Icon icon={SelectIcon} width="1.2rem" height=".8rem" />
             </div>
 
             <TruthRender conditional={isOpen}>
@@ -89,7 +93,15 @@ const Select = ({ children, initialIndex, color = "primary" }: SelectProps) => {
                         backgroundColor: `var(--bg-${color})`,
                     }}
                 >
-                    {restItems}
+                    {restItems.map((item) => (
+                        <SelectItem
+                            key={item.index}
+                            onClick={click(item.index)}
+                            color={color}
+                        >
+                            {item.element}
+                        </SelectItem>
+                    ))}
                 </div>
             </TruthRender>
         </div>

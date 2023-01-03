@@ -14,40 +14,30 @@ import styles from "./Select.module.scss";
 
 export interface SelectItemProps {
     children: React.ReactNode;
-    onClick?: () => void;
-
-    _selected?: boolean;
-    _color?: ThemeColor;
+    onClick: () => void;
+    color: ThemeColor;
 }
 
 const SelectItem = ({
     children,
     onClick,
-
-    _selected = false,
-    _color,
+    color = "primary",
 }: SelectItemProps) => {
     const itemRef = React.useRef();
 
     const isHover = useIsHover(itemRef);
-
-    const clickHandler = () => {
-        if (!_selected) {
-            onClick();
-        }
-    };
 
     return (
         <div
             ref={itemRef}
             className={styles.select__item}
             style={{
-                color: isHover ? HoverColors[_color] : Colors[_color],
+                color: isHover ? HoverColors[color] : Colors[color],
                 backgroundColor: isHover
-                    ? HoverBackgrounds[_color]
-                    : Backgrounds[_color],
+                    ? HoverBackgrounds[color]
+                    : Backgrounds[color],
             }}
-            onClick={clickHandler}
+            onClick={onClick}
         >
             {children}
         </div>
