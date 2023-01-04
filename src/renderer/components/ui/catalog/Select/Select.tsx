@@ -82,7 +82,12 @@ const Select = ({ children, onClick, options }: SelectProps) => {
                     transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                 }}
             >
-                <Icon icon={SelectIcon} width="1.2rem" height=".8rem" />
+                <Icon
+                    icon={SelectIcon}
+                    width="1.2rem"
+                    height=".8rem"
+                    color={color}
+                />
             </div>
 
             <TruthRender conditional={isOpen}>

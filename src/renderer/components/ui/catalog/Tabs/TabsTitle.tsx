@@ -3,7 +3,9 @@ import React from "react";
 import useIsHover from "@hooks/css/useIsHover";
 
 import {
+    Colors,
     Backgrounds,
+    HoverColors,
     HoverBackgrounds,
     ThemeColor,
 } from "@services/Theme.service";
@@ -27,6 +29,7 @@ const TabsTitle = ({ children, onClick, isActive, color }: TabsTitleProps) => {
             ref={tabRef}
             className={styles.tabs__title}
             style={{
+                color: isHover || isActive ? HoverColors[color] : Colors[color],
                 backgroundColor:
                     isHover || isActive
                         ? HoverBackgrounds[color]
