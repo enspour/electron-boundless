@@ -27,7 +27,11 @@ const AsyncFilledButton: FC<AsyncFilledButtonProps> = ({
     };
 
     return (
-        <FilledButton onClick={click} color={color}>
+        <FilledButton
+            onClick={click}
+            disabled={state === "pending"}
+            color={color}
+        >
             {state === "pending" ? (
                 <div className="lds-hourglass"></div>
             ) : (
