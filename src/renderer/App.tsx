@@ -4,6 +4,7 @@ import useServices from "@hooks/initializers/useServices";
 
 import "@assets/styles/reset.scss";
 import "@assets/styles/global.scss";
+import "@assets/styles/loading.scss";
 
 import "@assets/styles/themes/dark.scss";
 
