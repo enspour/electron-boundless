@@ -2,6 +2,8 @@ import React from "react";
 
 import SwitcherItem from "./SwitcherItem";
 
+import useOptions from "@hooks/useOptions";
+
 import { Colors, Backgrounds, ThemeColor } from "@services/Theme.service";
 
 import styles from "./Switcher.module.scss";
@@ -23,11 +25,7 @@ interface SwitcherProps {
 }
 
 const Switcher: React.FC<SwitcherProps> = ({ children, onClick, options }) => {
-    const { initialIndex, color } = React.useMemo(
-        () => Object.assign({}, initialOptions, options),
-        []
-    );
-
+    const { initialIndex, color } = useOptions(initialOptions, options);
     const [index, setIndex] = React.useState(initialIndex);
 
     const click = (idx: number) => () => {

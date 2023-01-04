@@ -3,6 +3,8 @@ import React from "react";
 import TabsTitle from "./TabsTitle";
 import TabsItem from "./TabsItem";
 
+import useOptions from "@hooks/useOptions";
+
 import { Backgrounds, ThemeColor } from "@services/Theme.service";
 
 import styles from "./Tabs.module.scss";
@@ -27,9 +29,9 @@ interface TabsProps {
 }
 
 const Tabs = ({ children, titles, onClick, options }: TabsProps) => {
-    const { initialIndex, transition, color } = React.useMemo(
-        () => Object.assign({}, initialOptions, options),
-        []
+    const { initialIndex, transition, color } = useOptions(
+        initialOptions,
+        options
     );
 
     const [index, setIndex] = React.useState(initialIndex);

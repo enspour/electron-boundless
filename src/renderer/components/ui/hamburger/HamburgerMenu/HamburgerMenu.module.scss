@@ -1,6 +1,7 @@
 .hamburger {
     padding: 1rem;
     padding-right: 0;
+    min-width: 22rem;
     width: 22rem;
     height: 100%;
     transition: 0.4s;
@@ -9,6 +10,7 @@
 
 .hamburger__hide {
     width: 0;
+    min-width: 0;
     padding: 0;
 }
 
