@@ -6,7 +6,7 @@
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .deck__title {
@@ -15,12 +15,16 @@
     font-weight: 600;
 }
 
-.deck__details {
-}
-
 .deck__details__title {
     margin-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.deck__level {
+    display: flex;
+    gap: 3rem;
 }
 
 .deck__button {

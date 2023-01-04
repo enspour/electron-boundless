@@ -2,6 +2,7 @@ import React from "react";
 
 import Input from "@components/ui/catalog/Input/Input";
 import FilledButton from "@components/ui/catalog/FilledButton/FilledButton";
+import FlatSelect from "@components/ui/catalog/FlatSelect/FlatSelect";
 
 import styles from "./CreateDeck.module.scss";
 
@@ -14,8 +15,8 @@ const CreateDeck = () => {
         <div className={styles.deck}>
             <div className={styles.deck__title}>Create new Deck</div>
 
-            <div className={styles.deck__details}>
-                <div className={styles.deck__details__title}>Deck name</div>
+            <div>
+                <div className={styles.deck__details__title}>Deck Name</div>
 
                 <Input
                     value={name}
@@ -23,6 +24,19 @@ const CreateDeck = () => {
                     placeholder="Name"
                     color="secondary"
                 />
+            </div>
+
+            <div className={styles.deck__level}>
+                <div className={styles.deck__details__title}>Deck Level</div>
+
+                <FlatSelect options={{ color: "secondary" }}>
+                    <div>Beginners</div>
+                    <div>Pre-intermediate</div>
+                    <div>Intermediate</div>
+                    <div>Upper-intermediate</div>
+                    <div>Advanced</div>
+                    <div>Mastery</div>
+                </FlatSelect>
             </div>
 
             <div className={styles.deck__button}>
