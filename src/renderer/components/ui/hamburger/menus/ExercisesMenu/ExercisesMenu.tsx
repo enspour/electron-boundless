@@ -36,21 +36,10 @@ const ExercisesMenu = () => {
                     <HorizontalMenuLink
                         to="/exercises/quiz"
                         onClick={() => {
-                            if (location.pathname !== "/exercises/quiz") {
-                                services.undoHistory.push(
-                                    "hamburger-navigate",
-                                    {
-                                        redoArgs: [
-                                            Menus.exercises,
-                                            "/exercises/quiz",
-                                        ],
-                                        undoArgs: [
-                                            Menus.exercises,
-                                            location.pathname,
-                                        ],
-                                    }
-                                );
-                            }
+                            services.undoHistory.execute("hamburger-navigate", {
+                                redoArgs: [Menus.exercises, "/exercises/quiz"],
+                                undoArgs: [Menus.exercises, location.pathname],
+                            });
                         }}
                     >
                         Quiz
@@ -59,21 +48,13 @@ const ExercisesMenu = () => {
                     <HorizontalMenuLink
                         to="/exercises/word-shake"
                         onClick={() => {
-                            if (location.pathname !== "/exercises/word-shake") {
-                                services.undoHistory.push(
-                                    "hamburger-navigate",
-                                    {
-                                        redoArgs: [
-                                            Menus.exercises,
-                                            "/exercises/word-shake",
-                                        ],
-                                        undoArgs: [
-                                            Menus.exercises,
-                                            location.pathname,
-                                        ],
-                                    }
-                                );
-                            }
+                            services.undoHistory.execute("hamburger-navigate", {
+                                redoArgs: [
+                                    Menus.exercises,
+                                    "/exercises/word-shake",
+                                ],
+                                undoArgs: [Menus.exercises, location.pathname],
+                            });
                         }}
                     >
                         WordShake

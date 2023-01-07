@@ -18,12 +18,10 @@ const MainMenu = () => {
                 <HorizontalMenuLink
                     to="/"
                     onClick={() => {
-                        if (location.pathname !== "/") {
-                            services.undoHistory.push("hamburger-navigate", {
-                                redoArgs: [Menus.main, "/"],
-                                undoArgs: [Menus.main, location.pathname],
-                            });
-                        }
+                        services.undoHistory.execute("hamburger-navigate", {
+                            redoArgs: [Menus.main, "/"],
+                            undoArgs: [Menus.main, location.pathname],
+                        });
                     }}
                 >
                     Discover
@@ -32,12 +30,10 @@ const MainMenu = () => {
                 <HorizontalMenuLink
                     to="/decks"
                     onClick={() => {
-                        if (location.pathname !== "/decks") {
-                            services.undoHistory.push("hamburger-navigate", {
-                                redoArgs: [Menus.main, "/decks"],
-                                undoArgs: [Menus.main, location.pathname],
-                            });
-                        }
+                        services.undoHistory.execute("hamburger-navigate", {
+                            redoArgs: [Menus.main, "/decks"],
+                            undoArgs: [Menus.main, location.pathname],
+                        });
                     }}
                 >
                     Decks
@@ -58,12 +54,10 @@ const MainMenu = () => {
                 <HorizontalMenuLink
                     to="/notifications"
                     onClick={() => {
-                        if (location.pathname !== "/notifications") {
-                            services.undoHistory.push("hamburger-navigate", {
-                                redoArgs: [Menus.main, "/notifications"],
-                                undoArgs: [Menus.main, location.pathname],
-                            });
-                        }
+                        services.undoHistory.execute("hamburger-navigate", {
+                            redoArgs: [Menus.main, "/notifications"],
+                            undoArgs: [Menus.main, location.pathname],
+                        });
                     }}
                 >
                     Notifications
@@ -72,12 +66,10 @@ const MainMenu = () => {
                 <HorizontalMenuLink
                     to="/account"
                     onClick={() => {
-                        if (location.pathname !== "/account") {
-                            services.undoHistory.push("hamburger-navigate", {
-                                redoArgs: [Menus.main, "/account"],
-                                undoArgs: [Menus.main, location.pathname],
-                            });
-                        }
+                        services.undoHistory.execute("hamburger-navigate", {
+                            redoArgs: [Menus.main, "/account"],
+                            undoArgs: [Menus.main, location.pathname],
+                        });
                     }}
                 >
                     Account
@@ -86,12 +78,10 @@ const MainMenu = () => {
                 <HorizontalMenuLink
                     to="/settings"
                     onClick={() => {
-                        if (location.pathname !== "/settings") {
-                            services.undoHistory.push("hamburger-navigate", {
-                                redoArgs: [Menus.main, "/settings"],
-                                undoArgs: [Menus.main, location.pathname],
-                            });
-                        }
+                        services.undoHistory.execute("hamburger-navigate", {
+                            redoArgs: [Menus.main, "/settings"],
+                            undoArgs: [Menus.main, location.pathname],
+                        });
                     }}
                 >
                     Settings

@@ -72,22 +72,6 @@ class UndoHistoryService implements Service {
         }
     }
 
-    push(name: string, args: UndoHistoryItemArgs = initialState) {
-        const command = this.commands.find((item) => item.name === name);
-        if (command) {
-            if (this.position !== this.history.length - 1) {
-                this.history.splice(this.position + 1);
-            }
-
-            this.history.push({
-                name,
-                args,
-            });
-
-            this.position += 1;
-        }
-    }
-
     undo() {
         if (this.history.length === 0) {
             return;
