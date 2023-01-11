@@ -1,6 +1,6 @@
 import { IpcRendererEvent } from "electron";
 
-export type Listener = (ev: IpcRendererEvent, ...args: any[]) => void;
+import { DecksRepository } from "@global/types";
 
 export interface App {
     quit: () => Promise<void>;
@@ -9,14 +9,17 @@ export interface App {
     minimize: () => Promise<void>;
 }
 
+export type IpcListener = (ev: IpcRendererEvent, ...args: any[]) => void;
+
 export interface IpcRenderer {
-    on: (channel: string, listener: Listener) => void;
-    off: (channel: string, listener: Listener) => void;
+    on: (channel: string, listener: IpcListener) => void;
+    off: (channel: string, listener: IpcListener) => void;
 }
 
 declare global {
     interface Window {
         app: App;
         ipcRenderer: IpcRenderer;
+        decksStorage: DecksRepository;
     }
 }
