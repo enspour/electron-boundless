@@ -7,13 +7,13 @@ export interface Command {
 }
 
 export interface UndoHistoryItemArgs {
-    redoArgs: any[];
-    undoArgs: any[];
+    redo: any[];
+    undo: any[];
 }
 
 const initialState: UndoHistoryItemArgs = {
-    redoArgs: [],
-    undoArgs: [],
+    redo: [],
+    undo: [],
 };
 
 interface UndoRedoItem {
@@ -57,8 +57,24 @@ class UndoHistoryService implements Service {
     execute(name: string, args: UndoHistoryItemArgs = initialState) {
         const command = this.commands.find((item) => item.name === name);
         if (command) {
-            command.execute(...args.redoArgs);
+            command.execute(...args.redo);
 
+            if (this.position !== this.history.length - 1) {
+                this.history.splice(this.position + 1);
+            }
+
+            this.history.push({
+                name,
+                args,
+            });
+
+            this.position += 1;
+        }
+    }
+
+    push(name: string, args: UndoHistoryItemArgs = initialState) {
+        const command = this.commands.find((item) => item.name === name);
+        if (command) {
             if (this.position !== this.history.length - 1) {
                 this.history.splice(this.position + 1);
             }
@@ -89,7 +105,7 @@ class UndoHistoryService implements Service {
             );
 
             if (command) {
-                command.undo(...history.args.undoArgs);
+                command.undo(...history.args.undo);
             }
 
             this.position -= 1;
@@ -113,7 +129,7 @@ class UndoHistoryService implements Service {
             );
 
             if (command) {
-                command.execute(...history.args.redoArgs);
+                command.execute(...history.args.redo);
             }
         }
     }
