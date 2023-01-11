@@ -14,16 +14,24 @@
     "jsx": "react-jsx",
     "paths": {
       "*": ["node_modules/*"],
-      "@components/*": ["src/renderer/components/*"],
-      "@hooks/*": ["src/renderer/hooks/*"],
-      "@assets/*": ["src/renderer/assets/*"],
-      "@services/*": ["src/renderer/services/*"],
+      
+      "@ipc/*": ["src/global/ipc/*"],
+      "@global/*": ["src/global/*"],
+      "@declarations/*": ["src/declarations/*"],
 
-      "@redux": ["src/renderer/redux/index.ts"],
+      "@components/*": ["src/renderer/components/*"],
+      "@services/*": ["src/renderer/services/*"],
       "@services": ["src/renderer/services/index.ts"],
-      "@utils": ["src/renderer/utils/index.ts"],
+      "@hooks/*": ["src/renderer/hooks/*"],
+      "@redux": ["src/renderer/redux/index.ts"],
       "@constants": ["src/renderer/constants/index.ts"],
+      "@assets/*": ["src/renderer/assets/*"],
+      "@utils": ["src/renderer/utils/index.ts"],
+
+      "@main-utils": ["src/main/utils/index.ts"],
+      "@main-services": ["src/main/services/index.ts"],
+      "@main-services/*": ["src/main/services/*"],
     }
   },
-  "include": ["src/**/*", "src/types/**/*.d.ts"],
+  "include": ["src/**/*"],
 }

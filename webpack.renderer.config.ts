@@ -26,6 +26,10 @@ export const rendererConfig: Configuration = {
     plugins,
     resolve: {
         alias: {
+            "@global": path.resolve(__dirname, "src/global/"),
+            "@declarations": path.resolve(__dirname, "src/declarations/"),
+            "@ipc": path.resolve(__dirname, "src/global/ipc/"),
+
             "@components": path.resolve(__dirname, "src/renderer/components/"),
             "@hooks": path.resolve(__dirname, "src/renderer/hooks/"),
             "@assets": path.resolve(__dirname, "src/renderer/assets/"),
