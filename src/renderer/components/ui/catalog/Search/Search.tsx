@@ -5,7 +5,12 @@ import Icon from "@components/ui/catalog/Icon/Icon";
 import SearchIcon from "@assets/images/search/search.svg";
 import ClearIcon from "@assets/images/input/clear.svg";
 
-import { Backgrounds, Colors, ThemeColor } from "@services/Theme.service";
+import {
+    Colors,
+    Backgrounds,
+    BorderColors,
+    ThemeColor,
+} from "@services/Theme.service";
 
 import styles from "./Search.module.scss";
 
@@ -36,6 +41,7 @@ const Search = ({
             style={{
                 color: Colors[color],
                 backgroundColor: Backgrounds[color],
+                border: `0.1rem solid ${BorderColors[color]}`,
             }}
         >
             <Icon

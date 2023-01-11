@@ -20,19 +20,19 @@ interface WindowControlsProps {
 }
 
 const WindowControls = ({ color = "primary" }: WindowControlsProps) => {
-    const isMaximize = useAppSelector((state) => state.window.isMaximize);
+    // const isMaximize = useAppSelector((state) => state.window.isMaximize);
 
     const close = async () => {
         await services.window.close();
     };
 
-    const maximize = async () => {
-        await services.window.maximize();
-    };
+    // const maximize = async () => {
+    //     await services.window.maximize();
+    // };
 
-    const unMaximize = async () => {
-        await services.window.unMaximize();
-    };
+    // const unMaximize = async () => {
+    //     await services.window.unMaximize();
+    // };
 
     const minimize = async () => {
         await services.window.minimize();
@@ -43,7 +43,7 @@ const WindowControls = ({ color = "primary" }: WindowControlsProps) => {
             <div className={styles.control}>
                 <Icon
                     icon={MinimizeIcon}
-                    width="1rem"
+                    width="1.2rem"
                     height=".2rem"
                     color={color}
                     onClick={minimize}
@@ -51,30 +51,10 @@ const WindowControls = ({ color = "primary" }: WindowControlsProps) => {
             </div>
 
             <div className={styles.control}>
-                {isMaximize ? (
-                    <Icon
-                        icon={UnMaximizeIcon}
-                        width="1.1rem"
-                        height="1.1rem"
-                        color={color}
-                        onClick={unMaximize}
-                    />
-                ) : (
-                    <Icon
-                        icon={MaximizeIcon}
-                        width="1.1rem"
-                        height="1.1rem"
-                        color={color}
-                        onClick={maximize}
-                    />
-                )}
-            </div>
-
-            <div className={styles.control}>
                 <Icon
                     icon={CloseIcon}
-                    width="1.1rem"
-                    height="1.1rem"
+                    width="1.2rem"
+                    height="1.2rem"
                     color={color}
                     onClick={close}
                 />

@@ -9,26 +9,29 @@
     color: var(--color-secondary);
 }
 
-.header__title {
-    width: 100%;
-    text-align: center;
-    line-height: 4.5rem;
-    white-space: nowrap;
-}
-
-.header__controls {
-    padding: 0 2rem;
+.header__left {
+    flex-grow: 1;
+    padding: 0 5.5rem 0 2.5rem;
     height: 100%;
-    width: 20rem;
     display: flex;
     align-items: center;
     gap: 2rem;
 }
 
-.header__window__controls {
-    padding: 0 2rem;
-    height: 100%;
-    width: 20rem;
+.header__middle {
+    flex-grow: 3;
+    width: 100%;
+    max-width: 50rem;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    -webkit-app-region: no-drag;
+}
+
+.header__right {
+    flex-grow: 1;
+    padding: 0 2.5rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
 }
