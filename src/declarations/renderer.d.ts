@@ -20,6 +20,6 @@ declare global {
     interface Window {
         app: App;
         ipcRenderer: IpcRenderer;
-        decksStorage: DecksRepository;
+        decksRepository: DecksRepository;
     }
 }
