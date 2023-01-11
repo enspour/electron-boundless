@@ -28,39 +28,39 @@ export default class IpcService implements Service {
             this.app.minimize();
         });
 
-        handle("decks-storage-find-all", async () => {
+        handle("decks-store-find-all", async () => {
             return await DecksStore.findAll();
         });
 
-        handle("decks-storage-find-one", async ({ id }) => {
+        handle("decks-store-find-one", async ({ id }) => {
             return await DecksStore.findOne(id);
         });
 
-        handle("decks-storage-find-words", async ({ id }) => {
+        handle("decks-store-find-words", async ({ id }) => {
             return await DecksStore.findWords(id);
         });
 
-        handle("decks-storage-create-one", async ({ deck }) => {
+        handle("decks-store-create-one", async ({ deck }) => {
             return await DecksStore.createOne(deck);
         });
 
-        handle("decks-storage-append-word", async ({ deckId, word }) => {
+        handle("decks-store-append-word", async ({ deckId, word }) => {
             return await DecksStore.appendWord(deckId, word);
         });
 
-        handle("decks-storage-remove-one", async ({ id }) => {
+        handle("decks-store-remove-one", async ({ id }) => {
             return await DecksStore.removeOne(id);
         });
 
-        handle("decks-storage-remove-word", async ({ deckId, id }) => {
+        handle("decks-store-remove-word", async ({ deckId, id }) => {
             return await DecksStore.removeWord(deckId, id);
         });
 
-        handle("decks-storage-update-one", async ({ id, deck }) => {
+        handle("decks-store-update-one", async ({ id, deck }) => {
             return await DecksStore.updateOne(id, deck);
         });
 
-        handle("decks-storage-update-word", async ({ deckId, id, word }) => {
+        handle("decks-store-update-word", async ({ deckId, id, word }) => {
             return await DecksStore.updateWord(deckId, id, word);
         });
 
