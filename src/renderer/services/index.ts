@@ -1,4 +1,6 @@
+import DecksService from "./Decks.service";
 import EventEmitterService from "./EventEmitter.service";
+import HamburgerService from "./Hamburger.service";
 import ThemeService from "./Theme.service";
 import UndoHistoryService from "./UndoHistory.service";
 import WindowService from "./Window.service";
@@ -19,6 +21,8 @@ export class Services {
     public window;
     public undoHistory;
     public theme;
+    public decks;
+    public hamburger;
 
     constructor() {
         this.EventEmitterCreator = () => new EventEmitterService();
@@ -26,6 +30,8 @@ export class Services {
         this.window = new WindowService();
         this.undoHistory = new UndoHistoryService();
         this.theme = new ThemeService();
+        this.decks = new DecksService();
+        this.hamburger = new HamburgerService(this);
     }
 
     initialize(): Destroyer {

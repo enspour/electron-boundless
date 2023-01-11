@@ -1,0 +1,17 @@
+.deck__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.deck__menu__back {
+    font-weight: 500;
+    padding: .8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--bg-secondary);
+    color: var(--color-secondary);
+    border-radius: 1rem;
+    cursor: pointer;
+}

@@ -1,9 +1,15 @@
-import { FC, memo, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { FC, memo } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+
+import services from "@services";
 
 import styles from "./HorizontalMenu.module.scss";
 
-const defineNavLinkClassName = (isActive: boolean): string => {
+interface NavLinkClassName {
+    isActive: boolean;
+}
+
+const defineNavLinkClassName = ({ isActive }: NavLinkClassName): string => {
     if (isActive) {
         return `${styles.menu__item} ${styles.menu__item__active}`;
     }
@@ -14,7 +20,7 @@ const defineNavLinkClassName = (isActive: boolean): string => {
 interface HorizontalMenuNavProps {
     children: React.ReactNode;
     to: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const HorizontalMenuLink: FC<HorizontalMenuNavProps> = ({
@@ -24,26 +30,22 @@ const HorizontalMenuLink: FC<HorizontalMenuNavProps> = ({
 }) => {
     const location = useLocation();
 
-    const [isActive, setIsActive] = useState(false);
-
     const handleClick = () => {
         if (location.pathname !== to) {
-            onClick();
+            services.hamburger.pushNavigate(to);
+
+            onClick?.call({});
         }
     };
 
-    useEffect(() => {
-        if (location.pathname === to) {
-            setIsActive(true);
-        } else {
-            setIsActive(false);
-        }
-    }, [location]);
-
     return (
-        <div className={defineNavLinkClassName(isActive)} onClick={handleClick}>
+        <NavLink
+            to={to}
+            className={defineNavLinkClassName}
+            onClick={handleClick}
+        >
             {children}
-        </div>
+        </NavLink>
     );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation, useParams } from "react-router-dom";
 
 import Icon from "@components/ui/catalog/Icon/Icon";
 import HorizontalMenu from "@components/ui/catalog/HorizontalMenu/HorizontalMenu";
@@ -9,14 +10,16 @@ import BackIcon from "@assets/images/hamburger/back.svg";
 
 import services from "@services";
 
-import styles from "./ExercisesMenu.module.scss";
+import styles from "./DeckMenu.module.scss";
 
-const ExercisesMenu = () => {
+const DeckMenu = () => {
+    const { id } = useParams();
+
     const back = () => services.hamburger.goBackMenu("main");
 
     return (
-        <div className={styles.exercises__menu}>
-            <div className={styles.exercises__menu__back} onClick={back}>
+        <div className={styles.deck__menu}>
+            <div className={styles.deck__menu__back} onClick={back}>
                 <Icon
                     icon={BackIcon}
                     width="1.4rem"
@@ -24,17 +27,17 @@ const ExercisesMenu = () => {
                     color="tertiary"
                 />
 
-                <div>Exercises</div>
+                <div>Deck</div>
             </div>
 
             <HorizontalMenu>
                 <HorizontalMenuNav>
-                    <HorizontalMenuLink to="/exercises/quiz">
-                        Quiz
+                    <HorizontalMenuLink to={`/decks/browse/${id}`}>
+                        Browse
                     </HorizontalMenuLink>
 
-                    <HorizontalMenuLink to="/exercises/word-shake">
-                        WordShake
+                    <HorizontalMenuLink to={`/decks/words/${id}`}>
+                        Words
                     </HorizontalMenuLink>
                 </HorizontalMenuNav>
             </HorizontalMenu>
@@ -42,4 +45,4 @@ const ExercisesMenu = () => {
     );
 };
 
-export default React.memo(ExercisesMenu);
+export default React.memo(DeckMenu);

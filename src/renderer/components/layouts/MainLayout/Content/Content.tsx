@@ -1,6 +1,6 @@
 import React from "react";
 
-import HamburgerMenu from "@components/ui/hamburger/HamburgerMenu/HamburgerMenu";
+import Hamburger from "@components/ui/hamburger/Hamburger/Hamburger";
 
 import styles from "./Content.module.scss";
 
@@ -11,7 +11,7 @@ interface ContentProps {
 const Content = ({ children }: ContentProps) => {
     return (
         <div className={styles.wrapper}>
-            <HamburgerMenu />
+            <Hamburger />
             <div className={styles.content}>{children}</div>
         </div>
     );
