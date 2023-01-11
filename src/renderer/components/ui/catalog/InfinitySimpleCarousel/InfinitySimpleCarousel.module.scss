@@ -1,0 +1,14 @@
+.carousel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.carousel__item {
+    min-width: 100%;
+    height: 100%;
+    transition: inherit;
+    overflow: hidden;
+}
