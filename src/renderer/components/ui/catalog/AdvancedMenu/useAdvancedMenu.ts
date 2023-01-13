@@ -1,4 +1,4 @@
-import { useState, useMemo, ReactNode } from "react";
+import { useState, useRef, ReactNode, useEffect } from "react";
 
 import useOptions from "@hooks/useOptions";
 import useInfinitySimpleCarousel from "../InfinitySimpleCarousel/useInfinitySimpleCarousel";
@@ -18,40 +18,42 @@ const initialOptions: AdvancedMenuOptions = {
 const useAdvancedMenu = (options?: AdvancedMenuOptions) => {
     const { initialMenu, transition } = useOptions(initialOptions, options);
 
-    const [menus, setMenus] = useState<Menus>([initialMenu, null, null]);
+    const temp = useRef<ReactNode>(initialMenu);
+
+    const [menus, setMenus] = useState<Menus>([null, null, null]);
 
     const { index, carouselRef, nextSlide, prevSlide } =
         useInfinitySimpleCarousel(menus.length, transition);
 
-    const realIndex = useMemo(() => index - 1, [index]);
-
     const openNextMenu = (menu: ReactNode) => {
-        setMenus((arr) => {
-            if (realIndex + 1 < arr.length) {
-                arr[realIndex + 1] = menu;
-            } else {
-                arr[0] = menu;
-            }
-
-            return [...arr];
-        });
-
+        temp.current = menu;
         nextSlide();
     };
 
     const openPrevMenu = (menu: ReactNode) => {
-        setMenus((arr) => {
-            if (realIndex - 1 >= 0) {
-                arr[realIndex - 1] = menu;
-            } else {
-                arr[arr.length - 1] = menu;
-            }
-
-            return [...arr];
-        });
-
+        temp.current = menu;
         prevSlide();
     };
+
+    useEffect(() => {
+        const result: Menus = [...menus];
+
+        const realIndex = index - 1;
+
+        if (0 <= realIndex && realIndex <= menus.length - 1) {
+            result[realIndex] = temp.current;
+        }
+
+        if (realIndex < 0) {
+            result[menus.length - 1] = temp.current;
+        }
+
+        if (realIndex > menus.length - 1) {
+            result[0] = temp.current;
+        }
+
+        setMenus(result);
+    }, [index]);
 
     return {
         index,
