@@ -8,9 +8,23 @@ import SearchControl from "@components/ui/heading/SearchControl/SearchControl";
 
 import AddIcon from "@assets/images/header/add.svg";
 
+import services from "@services";
+
 import styles from "./Header.module.scss";
 
 const Header = () => {
+    const create = async () => {
+        const deck = await services.decks.createOne({
+            name: "Unnamed",
+            description: "",
+            location: "local",
+            level: "Beginners",
+            createdAt: Date.now(),
+        });
+
+        services.hamburger.goNextMenu("deck", `/decks/browse/${deck.id}`);
+    };
+
     return (
         <div className={styles.header}>
             <div className={styles.header__left}>
@@ -23,7 +37,14 @@ const Header = () => {
             </div>
 
             <div className={styles.header__right}>
-                <Icon icon={AddIcon} height="1.4rem" width="1.4rem" />
+                <div className={styles.header__control}>
+                    <Icon
+                        icon={AddIcon}
+                        height="1.4rem"
+                        width="1.4rem"
+                        onClick={create}
+                    />
+                </div>
 
                 <WindowControls color="secondary" />
             </div>
