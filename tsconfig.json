@@ -20,8 +20,8 @@
       "@declarations/*": ["src/declarations/*"],
 
       "@components/*": ["src/renderer/components/*"],
-      "@services/*": ["src/renderer/services/*"],
       "@services": ["src/renderer/services/index.ts"],
+      "@services/*": ["src/renderer/services/*"],
       "@hooks/*": ["src/renderer/hooks/*"],
       "@redux": ["src/renderer/redux/index.ts"],
       "@constants": ["src/renderer/constants/index.ts"],
