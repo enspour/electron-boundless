@@ -29,6 +29,10 @@ export default class HamburgerService implements Service {
     }
 
     goNextMenu(name: HamburgerMenuName, to?: string) {
+        if (this.current === name) {
+            return;
+        }
+
         if (to) {
             this.locations[name] = to;
         }
@@ -42,6 +46,10 @@ export default class HamburgerService implements Service {
     }
 
     goPrevMenu(name: HamburgerMenuName, to?: string) {
+        if (this.current === name) {
+            return;
+        }
+
         if (to) {
             this.locations[name] = to;
         }
