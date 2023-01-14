@@ -3,10 +3,10 @@ import { Service, Destroyer, Services } from ".";
 export type HamburgerMenuName = "main" | "exercises" | "deck";
 
 export default class HamburgerService implements Service {
+    private undoHistory;
+
     private current: HamburgerMenuName;
     private locations: Record<HamburgerMenuName, string>;
-
-    private undoHistory;
 
     constructor({ undoHistory }: Services) {
         this.undoHistory = undoHistory;
@@ -15,20 +15,36 @@ export default class HamburgerService implements Service {
         this.locations = {
             main: "/",
             exercises: "/exercises/quiz",
-            deck: "/decks/",
+            deck: "",
         };
     }
 
     initialize(): Destroyer {
+        this.undoHistory.register({
+            name: "hamburger-next-menu",
+            execute: (menu: HamburgerMenuName) => (this.current = menu),
+            undo: (menu: HamburgerMenuName) => (this.current = menu),
+        });
+
+        this.undoHistory.register({
+            name: "hamburger-prev-menu",
+            execute: (menu: HamburgerMenuName) => (this.current = menu),
+            undo: (menu: HamburgerMenuName) => (this.current = menu),
+        });
+
         return () => {};
     }
 
-    pushNavigate(to: string) {
-        this.undoHistory.push("hamburger-navigate");
+    handleNavigate(to: string) {
         this.locations[this.current] = to;
+
+        this.undoHistory.push("hamburger-navigate", {
+            redo: [to],
+            undo: [],
+        });
     }
 
-    goNextMenu(name: HamburgerMenuName, to?: string) {
+    openNextMenu(name: HamburgerMenuName, to?: string) {
         if (this.current === name) {
             return;
         }
@@ -41,11 +57,9 @@ export default class HamburgerService implements Service {
             redo: [name, this.locations[name]],
             undo: [this.current],
         });
-
-        this.current = name;
     }
 
-    goPrevMenu(name: HamburgerMenuName, to?: string) {
+    openPrevMenu(name: HamburgerMenuName, to?: string) {
         if (this.current === name) {
             return;
         }
@@ -58,16 +72,9 @@ export default class HamburgerService implements Service {
             redo: [name, this.locations[name]],
             undo: [this.current],
         });
-
-        this.current = name;
     }
 
-    goBackMenu(name: HamburgerMenuName) {
-        this.undoHistory.execute("hamburger-prev-menu", {
-            redo: [name, this.locations[name]],
-            undo: [this.current],
-        });
-
-        this.current = name;
+    openBackMenu(name: HamburgerMenuName) {
+        this.openPrevMenu(name);
     }
 }

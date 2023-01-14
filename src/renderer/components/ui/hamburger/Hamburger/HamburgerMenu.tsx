@@ -33,15 +33,7 @@ const HamburgerMenu = () => {
     useEffect(() => {
         services.undoHistory.register({
             name: "hamburger-navigate",
-
-            execute: (to: string) => {
-                if (to) {
-                    navigate(to);
-                } else {
-                    navigate(1);
-                }
-            },
-
+            execute: (to: string) => navigate(to),
             undo: () => navigate(-1),
         });
 

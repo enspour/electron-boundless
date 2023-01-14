@@ -14,15 +14,8 @@ import styles from "./Header.module.scss";
 
 const Header = () => {
     const create = async () => {
-        const deck = await services.decks.createOne({
-            name: "Unnamed",
-            description: "",
-            location: "local",
-            level: "Beginners",
-            createdAt: Date.now(),
-        });
-
-        services.hamburger.goNextMenu("deck", `/decks/browse/${deck.id}`);
+        const deck = await services.decks.createOneDefault();
+        services.hamburger.openNextMenu("deck", `/decks/browse/${deck.id}`);
     };
 
     return (

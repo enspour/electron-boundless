@@ -17,7 +17,7 @@ const MainMenu = () => {
 
                 <HorizontalMenuButton
                     onClick={() => {
-                        services.hamburger.goNextMenu("exercises");
+                        services.hamburger.openNextMenu("exercises");
                     }}
                 >
                     Exercises

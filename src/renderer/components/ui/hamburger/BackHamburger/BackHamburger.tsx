@@ -21,7 +21,7 @@ const BackHamburger: FC<BackHamburgerProps> = ({
     title,
     previousMenu,
 }) => {
-    const back = () => services.hamburger.goBackMenu(previousMenu);
+    const back = () => services.hamburger.openBackMenu(previousMenu);
 
     return (
         <div className={styles.menu}>

@@ -55,9 +55,13 @@ class UndoHistoryService implements Service {
     }
 
     execute(name: string, args: UndoHistoryItemArgs = initialState) {
-        const command = this.commands.find((item) => item.name === name);
-        if (command) {
-            command.execute(...args.redo);
+        const isExists = this.commands.some((item) => item.name === name);
+        if (isExists) {
+            for (const command of this.commands) {
+                if (command.name === name) {
+                    command.execute(...args.redo);
+                }
+            }
 
             if (this.position !== this.history.length - 1) {
                 this.history.splice(this.position + 1);
@@ -73,8 +77,8 @@ class UndoHistoryService implements Service {
     }
 
     push(name: string, args: UndoHistoryItemArgs = initialState) {
-        const command = this.commands.find((item) => item.name === name);
-        if (command) {
+        const isExists = this.commands.some((item) => item.name === name);
+        if (isExists) {
             if (this.position !== this.history.length - 1) {
                 this.history.splice(this.position + 1);
             }
@@ -100,12 +104,10 @@ class UndoHistoryService implements Service {
         if (this.position >= 0) {
             const history = this.history[this.position];
 
-            const command = this.commands.find(
-                (item) => item.name === history.name
-            );
-
-            if (command) {
-                command.undo(...history.args.undo);
+            for (const command of this.commands) {
+                if (command.name === history.name) {
+                    command.undo(...history.args.undo);
+                }
             }
 
             this.position -= 1;
@@ -124,12 +126,10 @@ class UndoHistoryService implements Service {
         if (this.position < this.history.length) {
             const history = this.history[this.position];
 
-            const command = this.commands.find(
-                (item) => item.name === history.name
-            );
-
-            if (command) {
-                command.execute(...history.args.redo);
+            for (const command of this.commands) {
+                if (command.name === history.name) {
+                    command.execute(...history.args.redo);
+                }
             }
         }
     }

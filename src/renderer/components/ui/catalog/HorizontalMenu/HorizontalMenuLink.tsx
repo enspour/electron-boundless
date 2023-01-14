@@ -32,8 +32,7 @@ const HorizontalMenuLink: FC<HorizontalMenuNavProps> = ({
 
     const handleClick = () => {
         if (location.pathname !== to) {
-            services.hamburger.pushNavigate(to);
-
+            services.hamburger.handleNavigate(to);
             onClick?.call({});
         }
     };
