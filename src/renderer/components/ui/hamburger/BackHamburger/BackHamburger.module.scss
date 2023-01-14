@@ -1,10 +1,10 @@
-.exercises__menu {
+.menu {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.exercises__menu__back {
+.menu__back {
     font-weight: 500;
     padding: .8rem 1rem;
     display: flex;
@@ -12,6 +12,5 @@
     gap: 2rem;
     background-color: var(--bg-secondary);
     color: var(--color-secondary);
-    border-radius: 1rem;
     cursor: pointer;
 }
