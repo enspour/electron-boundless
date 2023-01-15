@@ -1,18 +1,15 @@
 import { Resource } from "./Resource";
 
-export const DeckLevels = [
-    "Beginners",
-    "Pre-intermediate",
-    "Intermediate",
-    "Upper-intermediate",
-    "Advanced",
-    "Mastery",
-] as const;
-
-export type DeckLevel = typeof DeckLevels[number];
+export type DeckLevels =
+    | "Beginners"
+    | "Pre-intermediate"
+    | "Intermediate"
+    | "Upper-intermediate"
+    | "Advanced"
+    | "Mastery";
 
 export interface Deck extends Resource {
     name: string;
     description: string;
-    level: DeckLevel;
+    level: DeckLevels;
 }

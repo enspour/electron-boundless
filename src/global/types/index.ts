@@ -1,15 +1,17 @@
-import { Resource } from "./Resource";
-import { Deck, DeckLevels, DeckLevel } from "./Deck";
-import { Word, Image, Media } from "./Word";
+import { Resource, Image, Media } from "./Resource";
+import { Word } from "./Word";
+import { Deck, DeckLevels } from "./Deck";
 import { DecksRepository } from "./DecksRepository";
+
+import { LoadingStatus } from "./LoadingStatus";
 
 export {
     Resource,
     Deck,
     DeckLevels,
-    DeckLevel,
     Word,
-    Image as WordImage,
-    Media as WordMedia,
+    Image,
+    Media,
     DecksRepository,
+    LoadingStatus,
 };

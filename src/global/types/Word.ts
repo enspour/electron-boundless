@@ -1,25 +1,13 @@
-import { Resource } from "./Resource";
-
-export interface Image extends Resource {
-    size: {
-        width: number;
-        height: number;
-    };
-}
-
-export interface Media extends Resource {
-    duration: number;
-    type: "audio" | "video";
-}
+import { Resource, Media, Image } from "./Resource";
 
 export interface Transcription {
     name: string;
-    transcription: string;
+    text: string;
     audio: Media;
 }
 
 export interface Word extends Resource {
-    name: string;
+    text: string;
     transcriptions: Transcription[];
     translations: string[];
     definitions: string[];
@@ -27,4 +15,5 @@ export interface Word extends Resource {
     images: Image[];
     audios: Media[];
     videos: Media[];
+    examples: string[];
 }
