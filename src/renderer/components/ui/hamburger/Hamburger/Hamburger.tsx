@@ -1,12 +1,13 @@
-import { useEffect, useRef, memo } from "react";
+import { useRef, memo } from "react";
 
-import { hamburgerActions, useAppDispatch, useAppSelector } from "@redux";
+import { useAppSelector } from "@redux";
 
 import Box from "@components/ui/catalog/Box/Box";
 import HamburgerMenu from "./HamburgerMenu";
 
 import useStyleMatcher from "@hooks/css/useStyleMatcher";
 import useOptions from "@hooks/useOptions";
+import useToggleAtResizingWindow from "./useToggleAtResizingWindow";
 
 import styles from "./Hamburger.module.scss";
 
@@ -18,22 +19,6 @@ export interface HamburgerOptions {
 const initialOptions: HamburgerOptions = {
     closeAt: 800,
     transition: 400,
-};
-
-const useToggleAtResizingWindow = (options: HamburgerOptions) => {
-    const dispatch = useAppDispatch();
-
-    const size = useAppSelector((state) => state.window.size);
-
-    useEffect(() => {
-        const { width } = size;
-
-        if (width <= options.closeAt) {
-            dispatch(hamburgerActions.close());
-        } else {
-            dispatch(hamburgerActions.open());
-        }
-    }, [size]);
 };
 
 const matcher = {
@@ -53,7 +38,7 @@ const Hamburger = ({ options }: HamburgerProps) => {
 
     useStyleMatcher(hamburgerRef, isOpen, matcher, [isOpen]);
 
-    useToggleAtResizingWindow(combinedOptions);
+    useToggleAtResizingWindow(combinedOptions.closeAt);
 
     return (
         <div ref={hamburgerRef} className={styles.hamburger}>
