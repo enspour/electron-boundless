@@ -15,3 +15,8 @@ export interface Media extends Resource {
     duration: number;
     type: "audio" | "video";
 }
+
+export interface Sentence extends Resource {
+    text: string;
+    audio?: Media;
+}
