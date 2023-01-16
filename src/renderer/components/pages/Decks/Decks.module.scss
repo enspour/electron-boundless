@@ -1,3 +1,10 @@
+.decks {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .decks__empty {
     width: 90%;
     position: absolute;

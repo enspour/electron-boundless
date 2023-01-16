@@ -1,36 +1,42 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { memo, useEffect } from "react";
 
-import FilledButton from "@components/ui/catalog/FilledButton/FilledButton";
+import { decksActions, useAppDispatch, useAppSelector } from "@redux";
+
+import DeckCard from "@components/ui/catalog/DeckCard/DeckCard";
+import DecksEmpty from "./DecksEmpty";
 
 import styles from "./Decks.module.scss";
 
-const EmptyDecks = () => {
-    const navigate = useNavigate();
+const Decks = () => {
+    const status = useAppSelector((state) => state.decks.status);
+    const decks = useAppSelector((state) => state.decks.decks);
 
-    const create = () => {
-        navigate("/decks/create");
-    };
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(decksActions.update());
+    }, []);
+
+    if (status === "pending") {
+        return <div className="lds-hourglass"></div>;
+    }
+
+    if (status === "done" && decks.length === 0) {
+        return <DecksEmpty />;
+    }
 
     return (
-        <div className={styles.decks__empty}>
-            <div className={styles.decks__empty__title}>DECKS</div>
-
-            <div className={styles.decks__empty__hint}>
-                You don't have decks yet. You can create a new one.
-            </div>
-
-            <div className={styles.decks__empty__button}>
-                <FilledButton onClick={create} color="secondary">
-                    Create
-                </FilledButton>
-            </div>
+        <div className={styles.decks}>
+            {decks.map((deck) => (
+                <DeckCard
+                    key={deck.id}
+                    deck={deck}
+                    primary="secondary"
+                    secondary="tertiary"
+                />
+            ))}
         </div>
     );
 };
 
-const Decks = () => {
-    return <EmptyDecks />;
-};
-
-export default React.memo(Decks);
+export default memo(Decks);
