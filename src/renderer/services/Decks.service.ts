@@ -32,4 +32,18 @@ export default class DecksService implements Service {
     async createOne(deck: Omit<Deck, "id">) {
         return await window.decksRepository.createOne(deck);
     }
+
+    async createOneDefault() {
+        return await this.createOne({
+            name: "Unnamed",
+            description: "",
+            location: "local",
+            level: "Beginners",
+            createdAt: Date.now(),
+        });
+    }
+
+    async removeOne(id: string) {
+        return await window.decksRepository.removeOne(id);
+    }
 }
