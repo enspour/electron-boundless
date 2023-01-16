@@ -24,7 +24,6 @@
       "@services/*": ["src/renderer/services/*"],
       "@hooks/*": ["src/renderer/hooks/*"],
       "@redux": ["src/renderer/redux/index.ts"],
-      "@constants": ["src/renderer/constants/index.ts"],
       "@assets/*": ["src/renderer/assets/*"],
       "@utils": ["src/renderer/utils/index.ts"],
 

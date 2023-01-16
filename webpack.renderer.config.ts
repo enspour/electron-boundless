@@ -36,7 +36,6 @@ export const rendererConfig: Configuration = {
             "@services": path.resolve(__dirname, "src/renderer/services/"),
             "@redux": path.resolve(__dirname, "src/renderer/redux/"),
             "@utils": path.resolve(__dirname, "src/renderer/utils/"),
-            "@constants": path.resolve(__dirname, "src/renderer/constants/"),
         },
         extensions: [".js", ".ts", ".jsx", ".tsx", ".css", ".scss"],
     },
