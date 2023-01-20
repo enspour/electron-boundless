@@ -2,20 +2,20 @@ import React from "react";
 
 import styles from "./HorizontalMenu.module.scss";
 
-interface HorizontalMenuButtonProps {
+interface HorizontalMenuRemoveProps {
     children: React.ReactNode;
     onClick: () => void;
 }
 
-const HorizontalMenuButton = ({
+const HorizontalMenuRemove = ({
     children,
     onClick,
-}: HorizontalMenuButtonProps) => {
+}: HorizontalMenuRemoveProps) => {
     return (
-        <div className={styles.menu__item} onClick={onClick}>
+        <div className={styles.menu__item__remove} onClick={onClick}>
             {children}
         </div>
     );
 };
 
-export default React.memo(HorizontalMenuButton);
+export default React.memo(HorizontalMenuRemove);

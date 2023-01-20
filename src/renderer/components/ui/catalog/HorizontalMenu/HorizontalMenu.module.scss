@@ -1,6 +1,6 @@
 @mixin menu-item-active {
-    background-color: var(--bg-hover-secondary);
     color: var(--color-hover-secondary);
+    background-color: var(--bg-hover-secondary);
 }
 
 .menu {
@@ -32,4 +32,16 @@
 
 .menu__item__active {
     @include menu-item-active();
+}
+
+.menu__item__remove  {
+    padding: .8rem 2rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    color: var(--color-remove);
+    background-color: var(--bg-remove);
+    border-radius: 1rem;
+    cursor: pointer;
 }

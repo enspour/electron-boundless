@@ -17,13 +17,13 @@ const defineNavLinkClassName = ({ isActive }: NavLinkClassName): string => {
     return `${styles.menu__item}`;
 };
 
-interface HorizontalMenuNavProps {
+interface HorizontalMenuLinkProps {
     children: React.ReactNode;
     to: string;
     onClick?: () => void;
 }
 
-const HorizontalMenuLink: FC<HorizontalMenuNavProps> = ({
+const HorizontalMenuLink: FC<HorizontalMenuLinkProps> = ({
     children,
     to,
     onClick,
