@@ -28,12 +28,7 @@ const Decks = () => {
     return (
         <div className={styles.decks}>
             {decks.map((deck) => (
-                <DeckCard
-                    key={deck.id}
-                    deck={deck}
-                    primary="secondary"
-                    secondary="tertiary"
-                />
+                <DeckCard key={deck.id} deck={deck} primary="secondary" />
             ))}
         </div>
     );

@@ -33,8 +33,8 @@ const Header = () => {
                 <div className={styles.header__control}>
                     <Icon
                         icon={AddIcon}
-                        height="1.4rem"
-                        width="1.4rem"
+                        height="1.2rem"
+                        width="1.2rem"
                         onClick={create}
                     />
                 </div>
