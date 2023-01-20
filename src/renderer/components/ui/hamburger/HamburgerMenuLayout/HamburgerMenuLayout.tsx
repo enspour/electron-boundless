@@ -8,7 +8,7 @@ import { HamburgerMenuName } from "@services/Hamburger.service";
 
 import services from "@services";
 
-import styles from "./BackHamburger.module.scss";
+import styles from "./HamburgerMenuLayout.module.scss";
 
 interface HamburgerMenuLayout {
     children: ReactNode;
