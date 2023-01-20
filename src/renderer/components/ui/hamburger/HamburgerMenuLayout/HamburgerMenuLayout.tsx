@@ -10,13 +10,13 @@ import services from "@services";
 
 import styles from "./BackHamburger.module.scss";
 
-interface BackHamburgerProps {
+interface HamburgerMenuLayout {
     children: ReactNode;
     title: string;
     previousMenu: HamburgerMenuName;
 }
 
-const BackHamburger: FC<BackHamburgerProps> = ({
+const HamburgerMenuLayout: FC<HamburgerMenuLayout> = ({
     children,
     title,
     previousMenu,
@@ -41,4 +41,4 @@ const BackHamburger: FC<BackHamburgerProps> = ({
     );
 };
 
-export default memo(BackHamburger);
+export default memo(HamburgerMenuLayout);

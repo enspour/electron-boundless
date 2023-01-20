@@ -4,11 +4,11 @@ import HorizontalMenu from "@components/ui/catalog/HorizontalMenu/HorizontalMenu
 import HorizontalMenuNav from "@components/ui/catalog/HorizontalMenu/HorizontalMenuNav";
 import HorizontalMenuLink from "@components/ui/catalog/HorizontalMenu/HorizontalMenuLink";
 
-import BackHamburger from "../../BackHamburger/BackHamburger";
+import HamburgerMenuLayout from "../../HamburgerMenuLayout/HamburgerMenuLayout";
 
 const ExercisesMenu = () => {
     return (
-        <BackHamburger title="Exercises" previousMenu="main">
+        <HamburgerMenuLayout title="Exercises" previousMenu="main">
             <HorizontalMenu>
                 <HorizontalMenuNav>
                     <HorizontalMenuLink to="/exercises/quiz">
@@ -20,7 +20,7 @@ const ExercisesMenu = () => {
                     </HorizontalMenuLink>
                 </HorizontalMenuNav>
             </HorizontalMenu>
-        </BackHamburger>
+        </HamburgerMenuLayout>
     );
 };
 
