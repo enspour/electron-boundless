@@ -39,6 +39,7 @@ export default class DecksService implements Service {
             description: "",
             location: "local",
             level: "Beginners",
+            modifiedAt: Date.now(),
             createdAt: Date.now(),
         });
     }
