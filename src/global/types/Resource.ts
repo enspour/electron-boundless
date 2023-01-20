@@ -1,6 +1,7 @@
 export interface Resource {
     id: string;
     location: "local" | "remote";
+    modifiedAt: number;
     createdAt: number;
 }
 
@@ -14,9 +15,4 @@ export interface Image extends Resource {
 export interface Media extends Resource {
     duration: number;
     type: "audio" | "video";
-}
-
-export interface Sentence extends Resource {
-    text: string;
-    audio?: Media;
 }

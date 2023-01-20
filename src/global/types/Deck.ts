@@ -1,15 +1,8 @@
 import { Resource } from "./Resource";
-
-export type DeckLevels =
-    | "Beginners"
-    | "Pre-intermediate"
-    | "Intermediate"
-    | "Upper-intermediate"
-    | "Advanced"
-    | "Mastery";
+import { Levels } from "./English";
 
 export interface Deck extends Resource {
     name: string;
     description: string;
-    level: DeckLevels;
+    level: Levels;
 }

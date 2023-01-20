@@ -1,4 +1,4 @@
-import { Resource, Media, Image, Sentence } from "./Resource";
+import { Resource, Media, Image } from "./Resource";
 
 export interface Transcription {
     name: string;
@@ -6,11 +6,16 @@ export interface Transcription {
     audio: Media;
 }
 
+export interface Sentence {
+    text: string;
+    audio?: Media;
+}
+
 export interface Word extends Resource {
     text: string;
     transcriptions: Transcription[];
     translations: string[];
-    definitions: string[];
+    definitions: Sentence[];
     synonyms: string[];
     examples: {
         images: Image[];
