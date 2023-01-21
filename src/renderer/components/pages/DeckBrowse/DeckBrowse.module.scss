@@ -1,0 +1,59 @@
+.deck {
+    padding: 3rem 5rem;
+}
+
+.deck__name {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.deck__description {
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+.deck__description__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.deck__description__text {
+    margin-top: 1rem;
+    color: var(--hint-primary);
+}
+
+.deck__cards {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.deck__card {
+    padding: 1rem 2rem;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--color-secondary);
+    background-color: var(--bg-secondary);
+    border-radius: 1rem;
+}
+
+.deck__card__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.deck__card__value {
+    font-size: 1.4rem;
+    font-weight: 700;
+
+}
+
+.deck__card__title {
+    margin-top: .5rem;
+    font-size: 1.4rem;
+}
