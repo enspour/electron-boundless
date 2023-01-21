@@ -14,7 +14,7 @@ export default class HamburgerService implements Service {
         this.current = "main";
         this.locations = {
             main: "/",
-            exercises: "/exercises/quiz",
+            exercises: "/exercises/cards",
             deck: "",
         };
     }

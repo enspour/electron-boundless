@@ -11,12 +11,8 @@ const ExercisesMenu = () => {
         <HamburgerMenuLayout title="Exercises" previousMenu="main">
             <HorizontalMenu>
                 <HorizontalMenuNav>
-                    <HorizontalMenuLink to="/exercises/quiz">
-                        Quiz
-                    </HorizontalMenuLink>
-
-                    <HorizontalMenuLink to="/exercises/word-shake">
-                        WordShake
+                    <HorizontalMenuLink to="/exercises/cards">
+                        Cards
                     </HorizontalMenuLink>
                 </HorizontalMenuNav>
             </HorizontalMenu>

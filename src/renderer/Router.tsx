@@ -4,14 +4,13 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "@components/layouts/MainLayout/MainLayout";
 import Discover from "@components/pages/Discover/Discover";
 import Decks from "@components/pages/Decks/Decks";
-import DeckBrowse from "@components/pages/DeckBrowse/DeckBrowse";
-import DeckWords from "@components/pages/DeckWords/DeckWords";
+import DeckBrowse from "@components/pages/deck/DeckBrowse/DeckBrowse";
+import DeckWords from "@components/pages/deck/DeckWords/DeckWords";
 import Account from "@components/pages/Account/Account";
 import Notifications from "@components/pages/Notifications/Notifications";
 import Settings from "@components/pages/Settings/Settings";
 import About from "@components/pages/About/About";
-import Quiz from "@components/pages/Exercises/Quiz/Quiz";
-import WordShake from "@components/pages/Exercises/WordShake/WordShake";
+import Cards from "@components/pages/exercises/Cards/Cards";
 
 import services from "@services";
 
@@ -59,12 +58,8 @@ const router = createHashRouter([
                 element: <About />,
             },
             {
-                path: "/exercises/quiz",
-                element: <Quiz />,
-            },
-            {
-                path: "/exercises/word-shake",
-                element: <WordShake />,
+                path: "/exercises/cards",
+                element: <Cards />,
             },
         ],
     },
