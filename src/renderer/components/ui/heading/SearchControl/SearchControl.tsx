@@ -10,7 +10,7 @@ const SearchControl = () => {
             value={searchedText}
             setValue={setSearchedText}
             placeholder="Search"
-            color="secondary"
+            color="primary"
         />
     );
 };

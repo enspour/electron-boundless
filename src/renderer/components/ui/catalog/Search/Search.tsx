@@ -41,7 +41,6 @@ const Search = ({
             style={{
                 color: Colors[color],
                 backgroundColor: Backgrounds[color],
-                border: `0.1rem solid ${BorderColors[color]}`,
             }}
         >
             <Icon
