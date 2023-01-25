@@ -3,7 +3,7 @@ import { FC, ReactNode, useState } from "react";
 
 import FilledButton from "../FilledButton/FilledButton";
 
-import { LoadingStates } from "@constants";
+import { LoadingStatus } from "@global/types";
 
 interface AsyncFilledButtonProps {
     children: ReactNode;
@@ -16,7 +16,7 @@ const AsyncFilledButton: FC<AsyncFilledButtonProps> = ({
     onClick,
     color,
 }) => {
-    const [state, setState] = useState<LoadingStates>("idle");
+    const [state, setState] = useState<LoadingStatus>("idle");
 
     const click = async () => {
         setState("pending");
