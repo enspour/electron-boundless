@@ -35,7 +35,7 @@ export default class HamburgerService implements Service {
         return () => {};
     }
 
-    handleNavigate(to: string) {
+    setPage(to: string) {
         this.locations[this.current] = to;
 
         this.undoHistory.push("hamburger-navigate", {
@@ -44,8 +44,21 @@ export default class HamburgerService implements Service {
         });
     }
 
+    openPage(to: string) {
+        this.locations[this.current] = to;
+
+        this.undoHistory.execute("hamburger-navigate", {
+            redo: [to],
+            undo: [],
+        });
+    }
+
     openNextMenu(name: HamburgerMenuName, to?: string) {
         if (this.current === name) {
+            if (to && this.locations[name] !== to) {
+                this.openPage(to);
+            }
+
             return;
         }
 
@@ -61,6 +74,10 @@ export default class HamburgerService implements Service {
 
     openPrevMenu(name: HamburgerMenuName, to?: string) {
         if (this.current === name) {
+            if (to && this.locations[name] !== to) {
+                this.openPage(to);
+            }
+
             return;
         }
 

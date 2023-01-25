@@ -32,7 +32,7 @@ const HorizontalMenuLink: FC<HorizontalMenuLinkProps> = ({
 
     const handleClick = () => {
         if (location.pathname !== to) {
-            services.hamburger.handleNavigate(to);
+            services.hamburger.setPage(to);
             onClick?.call({});
         }
     };
