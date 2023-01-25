@@ -2,7 +2,6 @@ import { useRef, memo } from "react";
 
 import { useAppSelector } from "@redux";
 
-import Box from "@components/ui/catalog/Box/Box";
 import HamburgerMenu from "./HamburgerMenu";
 
 import useStyleMatcher from "@hooks/css/useStyleMatcher";
@@ -42,9 +41,7 @@ const Hamburger = ({ options }: HamburgerProps) => {
 
     return (
         <div ref={hamburgerRef} className={styles.hamburger}>
-            <Box color="secondary">
-                <HamburgerMenu />
-            </Box>
+            <HamburgerMenu />
         </div>
     );
 };

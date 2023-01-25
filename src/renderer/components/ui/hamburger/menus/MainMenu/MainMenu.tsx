@@ -6,34 +6,41 @@ import HorizontalMenuLink from "@components/ui/catalog/HorizontalMenu/Horizontal
 import HorizontalMenuButton from "@components/ui/catalog/HorizontalMenu/HorizontalMenuButton";
 
 import services from "@services/index";
+import HamburgerMenuLayout from "../../HamburgerMenuLayout/HamburgerMenuLayout";
 
 const MainMenu = () => {
     return (
-        <HorizontalMenu>
-            <HorizontalMenuNav>
-                <HorizontalMenuLink to="/">Discover</HorizontalMenuLink>
+        <HamburgerMenuLayout>
+            <HorizontalMenu>
+                <HorizontalMenuNav>
+                    <HorizontalMenuLink to="/">Discover</HorizontalMenuLink>
 
-                <HorizontalMenuLink to="/decks">Decks</HorizontalMenuLink>
+                    <HorizontalMenuLink to="/decks">Decks</HorizontalMenuLink>
 
-                <HorizontalMenuButton
-                    onClick={() => {
-                        services.hamburger.openNextMenu("exercises");
-                    }}
-                >
-                    Exercises
-                </HorizontalMenuButton>
-            </HorizontalMenuNav>
+                    <HorizontalMenuButton
+                        onClick={() => {
+                            services.hamburger.openNextMenu("exercises");
+                        }}
+                    >
+                        Exercises
+                    </HorizontalMenuButton>
+                </HorizontalMenuNav>
 
-            <HorizontalMenuNav>
-                <HorizontalMenuLink to="/notifications">
-                    Notifications
-                </HorizontalMenuLink>
+                <HorizontalMenuNav>
+                    <HorizontalMenuLink to="/notifications">
+                        Notifications
+                    </HorizontalMenuLink>
 
-                <HorizontalMenuLink to="/account">Account</HorizontalMenuLink>
+                    <HorizontalMenuLink to="/account">
+                        Account
+                    </HorizontalMenuLink>
 
-                <HorizontalMenuLink to="/settings">Settings</HorizontalMenuLink>
-            </HorizontalMenuNav>
-        </HorizontalMenu>
+                    <HorizontalMenuLink to="/settings">
+                        Settings
+                    </HorizontalMenuLink>
+                </HorizontalMenuNav>
+            </HorizontalMenu>
+        </HamburgerMenuLayout>
     );
 };
 

@@ -10,6 +10,7 @@ import HorizontalMenuRemove from "@components/ui/catalog/HorizontalMenu/Horizont
 import HorizontalMenuDropdown from "@components/ui/catalog/HorizontalMenu/HorizontalMenuDropdown";
 import HorizontalMenuButton from "@components/ui/catalog/HorizontalMenu/HorizontalMenuButton";
 
+import HamburgerBackButton from "../../HamburgerBackButton/HamburgerBackButton";
 import HamburgerMenuLayout from "../../HamburgerMenuLayout/HamburgerMenuLayout";
 
 import services from "@services";
@@ -25,8 +26,14 @@ const DeckMenu = () => {
         services.hamburger.openBackMenu("main");
     };
 
+    const cards = () => {};
+
+    const wordShake = () => {};
+
     return (
-        <HamburgerMenuLayout title="Deck" previousMenu="main">
+        <HamburgerMenuLayout>
+            <HamburgerBackButton title="Deck" name="main" />
+
             <HorizontalMenu>
                 <HorizontalMenuNav>
                     <HorizontalMenuLink to={`/decks/browse/${id}`}>
@@ -37,12 +44,12 @@ const DeckMenu = () => {
                         Words
                     </HorizontalMenuLink>
                     <HorizontalMenuDropdown title="Learning">
-                        <HorizontalMenuButton onClick={() => {}}>
+                        <HorizontalMenuButton onClick={cards}>
                             Cards
                         </HorizontalMenuButton>
 
-                        <HorizontalMenuButton onClick={() => {}}>
-                            Cards
+                        <HorizontalMenuButton onClick={wordShake}>
+                            WordShake
                         </HorizontalMenuButton>
                     </HorizontalMenuDropdown>
                 </HorizontalMenuNav>
