@@ -16,18 +16,17 @@
     gap: .2rem;
 }
 
-.menu__item {
+.menu__item, .menu__item__remove {
     padding: .8rem 2rem;
-    display: grid;
+    display: flex;
     align-items: center;
-    grid-template-columns: 2rem 1fr;
-    gap: 1rem;
+    justify-content: space-between;
     border-radius: 1rem;
     cursor: pointer;
+}
 
-    &:hover {
-        @include menu-item-active();
-    }
+.menu__item:hover {
+    @include menu-item-active();
 }
 
 .menu__item__active {
@@ -35,13 +34,19 @@
 }
 
 .menu__item__remove  {
-    padding: .8rem 2rem;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 2rem 1fr;
-    gap: 1rem;
     color: var(--color-remove);
     background-color: var(--bg-remove);
-    border-radius: 1rem;
-    cursor: pointer;
+}
+
+.menu__item__dropdown {
+    position: relative;
+}
+
+.menu__item__dropdown__items {
+    width: 100%;
+    position: absolute;
+    top: 3.7rem;
+    left: 0;
+    background-color: var(--bg-hover-secondary);
+    border-radius: 0 0 1rem 1rem;
 }

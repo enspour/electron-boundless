@@ -7,6 +7,8 @@ import HorizontalMenu from "@components/ui/catalog/HorizontalMenu/HorizontalMenu
 import HorizontalMenuNav from "@components/ui/catalog/HorizontalMenu/HorizontalMenuNav";
 import HorizontalMenuLink from "@components/ui/catalog/HorizontalMenu/HorizontalMenuLink";
 import HorizontalMenuRemove from "@components/ui/catalog/HorizontalMenu/HorizontalMenuRemove";
+import HorizontalMenuDropdown from "@components/ui/catalog/HorizontalMenu/HorizontalMenuDropdown";
+import HorizontalMenuButton from "@components/ui/catalog/HorizontalMenu/HorizontalMenuButton";
 
 import HamburgerMenuLayout from "../../HamburgerMenuLayout/HamburgerMenuLayout";
 
@@ -34,9 +36,22 @@ const DeckMenu = () => {
                     <HorizontalMenuLink to={`/decks/words/${id}`}>
                         Words
                     </HorizontalMenuLink>
+                    <HorizontalMenuDropdown title="Learning">
+                        <HorizontalMenuButton onClick={() => {}}>
+                            Cards
+                        </HorizontalMenuButton>
+
+                        <HorizontalMenuButton onClick={() => {}}>
+                            Cards
+                        </HorizontalMenuButton>
+                    </HorizontalMenuDropdown>
                 </HorizontalMenuNav>
 
                 <HorizontalMenuNav>
+                    <HorizontalMenuLink to={`/decks/settings/${id}`}>
+                        Settings
+                    </HorizontalMenuLink>
+
                     <HorizontalMenuRemove onClick={remove}>
                         Remove
                     </HorizontalMenuRemove>
