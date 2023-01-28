@@ -44,7 +44,7 @@ const DeckCard: FC<DeckCardProps> = ({ deck, primary = "primary" }) => {
     const dispatch = useAppDispatch();
 
     const open = () => {
-        services.hamburger.openNextMenu("deck", `/decks/browse/${deck.id}`);
+        services.hamburger.openNextMenu("deck", `/decks/words/${deck.id}`);
     };
 
     const remove = async (e: MouseEvent<HTMLElement>) => {
