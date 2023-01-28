@@ -41,7 +41,7 @@ const router = createHashRouter([
             {
                 path: "/decks/words/:id",
                 loader: async ({ params }) => {
-                    return await services.decks.getOne(params.id);
+                    return await services.decks.getWords(params.id);
                 },
                 element: <DeckWords />,
             },
