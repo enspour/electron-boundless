@@ -13,7 +13,12 @@ const DeckBrowseDescription: FC<DeckBrowseDescriptionProps> = ({
         return null;
     }
 
-    return <div className={styles.deck__description}>{description}</div>;
+    return (
+        <div className={styles.deck__description}>
+            <div className={styles.deck__description__title}>Description</div>
+            <div className={styles.deck__description__value}>{description}</div>
+        </div>
+    );
 };
 
 export default memo(DeckBrowseDescription);
