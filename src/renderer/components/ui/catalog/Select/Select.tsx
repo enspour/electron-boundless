@@ -67,12 +67,14 @@ const Select = ({ children, onClick, options }: SelectProps) => {
             style={{
                 color: Colors[color],
                 backgroundColor: Backgrounds[color],
-                border: `0.1rem solid ${BorderColors[color]}`,
+                border: isOpen
+                    ? `0.1rem solid ${BorderColors[color]}`
+                    : `0.1rem solid ${Backgrounds[color]}`,
                 borderRadius: isOpen ? "1rem 1rem 0 0" : "1rem",
             }}
             onClick={toggle}
         >
-            <div className={styles.select__item__selected}>
+            <div className={styles.select__selected__item}>
                 {children[index]}
             </div>
 

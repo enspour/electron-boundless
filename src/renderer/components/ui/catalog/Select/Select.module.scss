@@ -1,23 +1,23 @@
 .select {
     padding-right: 2rem;
     position: relative;
-    height: 4rem;
+    height: 3.7rem;
     width: 100%;
     display: flex;
     gap: 1rem;
     cursor: pointer;
 }
 
-.select__item__selected {
+.select__selected__item {
     flex-grow: 1;
-    line-height: 4rem;
+    line-height: 3.7rem;
     padding: 0 2rem;
 }
 
 .select__items {
-    padding: 0.2rem;
+    padding: 0.1rem;
     position: absolute;
-    top: 4rem;
+    top: 3.7rem;
     left: 0;
     width: 100%;
     border-radius: 0 0 1rem 1rem;
@@ -25,6 +25,6 @@
 
 .select__item {
     padding: 0 2rem;
-    line-height: 4rem;
+    line-height: 3.5rem;
     border-radius: 1rem;
 }

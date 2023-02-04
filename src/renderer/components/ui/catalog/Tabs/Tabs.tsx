@@ -29,6 +29,10 @@ interface TabsProps {
 }
 
 const Tabs = ({ children, titles, onClick, options }: TabsProps) => {
+    if (children.length !== titles.length) {
+        throw new Error("Length of children doesn't equal length of titles.");
+    }
+
     const { initialIndex, transition, color } = useOptions(
         initialOptions,
         options

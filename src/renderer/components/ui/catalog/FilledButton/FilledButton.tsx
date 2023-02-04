@@ -35,21 +35,18 @@ const FilledButton = ({
     };
 
     return (
-        <div
-            ref={buttonRef}
-            className={styles.wrapper}
-            style={{
-                color: Colors[color],
-                backgroundColor: Backgrounds[color],
-            }}
-        >
+        <div ref={buttonRef}>
             <button
                 className={styles.button}
                 style={{
-                    color: isHover ? HoverColors[color] : Colors[color],
-                    backgroundColor: isHover
-                        ? HoverBackgrounds[color]
-                        : Backgrounds[color],
+                    color:
+                        isHover && !disabled
+                            ? HoverColors[color]
+                            : Colors[color],
+                    backgroundColor:
+                        isHover && !disabled
+                            ? HoverBackgrounds[color]
+                            : Backgrounds[color],
                 }}
                 disabled={disabled}
                 onClick={clickHandler}

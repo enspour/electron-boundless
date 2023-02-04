@@ -1,9 +1,10 @@
-import { ThemeColor } from "@services/Theme.service";
 import { FC, ReactNode, useState } from "react";
 
 import FilledButton from "../FilledButton/FilledButton";
 
 import { LoadingStatus } from "@global/types";
+
+import { ThemeColor } from "@services/Theme.service";
 
 interface AsyncFilledButtonProps {
     children: ReactNode;
