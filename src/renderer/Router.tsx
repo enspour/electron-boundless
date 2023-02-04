@@ -16,6 +16,8 @@ import DeckSettings from "@components/pages/deck/DeckSettings/DeckSettings";
 
 import Cards from "@components/pages/exercises/Cards/Cards";
 
+import Dev from "@components/pages/Dev/Dev";
+
 import services from "@services";
 
 const router = createHashRouter([
@@ -23,6 +25,10 @@ const router = createHashRouter([
         path: "/",
         element: <MainLayout />,
         children: [
+            {
+                path: "/dev",
+                element: <Dev />,
+            },
             {
                 path: "/",
                 element: <Discover />,

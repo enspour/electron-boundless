@@ -27,6 +27,8 @@ const MainMenu = () => {
                 </HorizontalMenuNav>
 
                 <HorizontalMenuNav>
+                    <HorizontalMenuLink to="/dev">Dev</HorizontalMenuLink>
+
                     <HorizontalMenuLink to="/notifications">
                         Notifications
                     </HorizontalMenuLink>
