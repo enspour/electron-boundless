@@ -145,8 +145,8 @@ const TabsExample = () => {
 
 const Dev = () => {
     return (
-        <div className={styles.wrapper}>
-            <div> Tested Page with components </div>
+        <div>
+            <div className={styles.title}> Tested Page with components </div>
 
             <div className={styles.components}>
                 <ButtonExamples />

@@ -1,0 +1,42 @@
+@mixin scroll($start: 0, $end: 0) {
+    &::-webkit-scrollbar {
+        width: 1rem;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scroll-color);
+        border-right: .4rem solid transparent;
+        border-left: .4rem solid transparent;
+        background-clip: padding-box;
+        border-radius: .4rem;
+    }
+  
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--scroll-hover-color);
+        border-right: .3rem solid transparent;
+        border-left: .3rem solid transparent;
+    }
+
+    /* Top margin */
+    &::-webkit-scrollbar-track-piece:start {
+        display: block;
+        background-color: transparent;
+        margin-top: $start;
+        margin-left: $start;
+    }
+
+    /* Bottom margin */
+    &::-webkit-scrollbar-track-piece:end {
+        display: block;
+        background-color: transparent;
+        margin-bottom: $end; 
+        margin-right: $end;
+    }
+}

@@ -1,0 +1,7 @@
+@import "../../../../assets/styles/mixins/scroll.scss";
+
+.box {
+    position: relative;
+
+    @include scroll(0rem, 1rem);
+}

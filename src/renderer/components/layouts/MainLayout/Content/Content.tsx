@@ -1,5 +1,7 @@
 import React from "react";
 
+import Box from "@components/ui/catalog/Box/Box";
+
 import Hamburger from "@components/ui/hamburger/Hamburger/Hamburger";
 
 import styles from "./Content.module.scss";
@@ -10,9 +12,9 @@ interface ContentProps {
 
 const Content = ({ children }: ContentProps) => {
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.content}>
             <Hamburger />
-            <div className={styles.content}>{children}</div>
+            <Box height="calc(100vh - 4.5rem)">{children}</Box>
         </div>
     );
 };
