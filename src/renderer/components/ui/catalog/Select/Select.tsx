@@ -4,6 +4,8 @@ import Icon from "@components/ui/catalog/Icon/Icon";
 import TruthRender from "@components/utils/TruthRender";
 import SelectItem from "./SelectItem";
 
+import useOptions from "@hooks/useOptions";
+
 import SelectIcon from "@assets/images/select/select.svg";
 
 import {
@@ -38,21 +40,15 @@ const Select = ({ children, onClick, options }: SelectProps) => {
                 element,
                 index,
             })),
-        []
+        [children]
     );
 
-    const { initialIndex, color } = React.useMemo(
-        () => Object.assign({}, initialOptions, options),
-        []
-    );
+    const { initialIndex, color } = useOptions(initialOptions, options);
 
     const [isOpen, setIsOpen] = React.useState(false);
     const [index, setIndex] = React.useState(initialIndex);
 
-    const restItems = React.useMemo(
-        () => items.filter((_, idx) => idx !== index),
-        [index]
-    );
+    const restItems = items.filter((_, idx) => idx !== index);
 
     const toggle = () => setIsOpen((prev) => !prev);
 
